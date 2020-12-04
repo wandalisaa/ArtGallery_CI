@@ -15,7 +15,7 @@
 						  <div class="card-body">
 							  <div class="row">
 								  <div class="text-left w-50 pl-3">
-									   <a href="<?= base_url("Admin/list") ?>">Artikel</a>
+									   <a href="<?= base_url("Admin/list/") ?>">Artikel</a>
 										<div class="text-white-50 small">Tambahkan Artikel</div>
 								  </div>
 								  <div class="text-right w-50 pr-3 plus-btn">
