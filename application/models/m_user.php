@@ -22,6 +22,12 @@ class M_user extends CI_Model{
 		 return $this->db->insert($table,$data);
 	   }
 
+		public function update($id,$data) {
+			$this->db->where('id_user',$id);
+			return $this->db->update('m_user',$data);
+		}
+		
+
 
 }
 ?>

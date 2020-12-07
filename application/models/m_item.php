@@ -7,7 +7,9 @@ class M_item extends CI_Model{
 	public function get_list_jenis() {
 		return $this->db->query("SELECT COUNT(c.id_art) as total ,a.nama_jenis ,a.id_jenis, c.gambar FROM m_jenis as a INNER JOIN tr_artikel as b ON a.id_jenis = b.id_jenis INNER JOIN tr_art as c ON c.id_artikel=b.id_artikel GROUP BY a.id_jenis LIMIT 7")->result();
 	}
-
+	public function get_all_jenis() {
+		return $this->db->query("SELECT COUNT(c.id_art) as total ,a.nama_jenis ,a.id_jenis, c.gambar FROM m_jenis as a INNER JOIN tr_artikel as b ON a.id_jenis = b.id_jenis INNER JOIN tr_art as c ON c.id_artikel=b.id_artikel GROUP BY a.id_jenis")->result();
+	}
 	// GERAKAN SENI
 	//  detail jenis
 	public function get_jenis($id) {
@@ -84,91 +86,23 @@ class M_item extends CI_Model{
 
 
 	// ================================================ INSERT ===================================================
-	// Gerakan Seni
-	public function input_jenis($data) {
-		return $this->db->query("INSERT INTO `m_jenis`( `nama_jenis`, `desk_jenis`, `tahun_awal`) VALUES ([value-2],[value-3],[value-4])");
-	}
-	// Media
-	public function input_media($data) {
-		return $this->db->insert('m_media',$data);
-	}
-	//Galeri
-	public function input_galeri($data) {
-		return $this->db->insert('m_galeri',$data);
-	}
-	// Seniman
-	public function input_seniman($data) {
-		return $this->db->insert('m_seniman',$data);
-	}
-	// Karya seni
-	public function input_art($data) {
-		return $this->db->insert('tr_art',$data);
-	}
-	// Artikel
-	public function input_artikel($data) {
-		return $this->db->insert('tr_artikel',$data);
+
+	public function input_data($table,$data) {
+		return $this->db->insert($table,$data);
 	}
 
 	// ============================================== Update =============================================================
-	// Gerakan Seni
-	public function update_jenis($id,$data) {
-		return $this->db->query("UPDATE `m_jenis` SET $data WHERE id_jenis = $id");
-	}
-	// Media
-	public function update_media($id,$data) {
-		$this->db->where('id_media',$id);
-		return $this->db->update('m_media',$data);
-	}
-	//Galeri
-	public function update_galeri($id,$data) {
-		$this->db->where('id_galeri',$id);
-		return $this->db->update('m_galeri',$data);
-	}
-	// Seniman
-	public function update_seniman($id,$data) {
-		 $this->db->where('id_seniman',$id);
-		return $this->db->update('m_seniman',$data);
-	}
-	// Karya seni
-	public function update_art($id,$data) {
-		$this->db->where('id_art',$id);
-		return $this->db->update('tr_art',$data);
-	}
-	// Artikel
-	public function update_artikel($id,$data) {
-		$this->db->where('id_artikel',$id);
-		return $this->db->update('tr_artikel',$data);
+
+
+	public function update_data($table,$kolom,$id,$data) {
+		$this->db->where($kolom,$id);
+		return $this->db->update($table,$data);
 	}
 	// ================================================== DELETE ============================================
 
-	  // Gerakan Seni
-	public function delete_jenis($id) {
-		return $this->db->query("DELETE FROM `m_jenis` WHERE id_jenis = $id");
-	}
-	// Media
-	public function delete_media($id) {
-		$this->db->where('id_media',$id);
-		return $this->db->delete('m_media');
-	}
-	//Galeri
-	public function delete_galeri($id) {
-		$this->db->where('id_galeri',$id);
-		return $this->db->delete('m_galeri');
-	}
-	// Seniman
-	public function delete_seniman($id) {
-		 $this->db->where('id_seniman',$id);
-		return $this->db->delete('m_seniman');
-	}
-	// Karya seni
-	public function delete_art($id) {
-		$this->db->where('id_art',$id);
-		return $this->db->delete('tr_art');
-	}
-	// Artikel
-	public function delete_artikel($id) {
-		$this->db->where('id_artikel',$id);
-		return $this->db->delete('tr_artikel');
+	public function delete_data($table,$id,$kolom) {
+		$this->db->where($kolom,$id);
+		return $this->db->delete($table);
 	}
 
 	// ================================ FAV ===============================
@@ -180,6 +114,28 @@ class M_item extends CI_Model{
 		return $this->db->delete('fav');
 	}
 	// ============================== Search ==========================
+	public function get_keyword($table,$keyword,$kolom){
+		$this->db->select('*');
+		$this->db->from($table);
+		$this->db->like($kolom,$keyword);
+
+		return $this->db->get()->result_array();
+	}
+	// =============================== List ===========================
+	public function get_list($table){
+		$this->db->select('*');
+		$this->db->from($table);
+
+		return $this->db->get()->result_array();
+	}
+	// detail
+	public function get_detail($table,$kolom,$id){
+		$this->db->select('*');
+		$this->db->from($table);
+		$this->db->where($kolom,$id);
+
+		return $this->db->get()->result_array();
+	}
 
 }
 ?>

@@ -25,6 +25,7 @@ class Home extends CI_Controller {
 			"title" => "Gerakan Seni"
 		  );
 		$data['jenis'] = $this->m_item->get_list_jenis();
+		$data['semuajenis'] = $this->m_item->get_all_jenis();
 		
 		$this->load->view('header', $data);
 		$this->load->view('index');

@@ -132,38 +132,16 @@
 			</button>
 		</div>
         <div class="row">
+		<?php foreach($semuajenis as $data){ ?>
             <div class="col-md-3">
-                <div class="blog__item set-bg" data-setbg="<?php echo base_url();?>assets/img/blog/4.jpg">
+                <div class="blog__item set-bg" data-setbg="<?= $data->gambar ?>">
                     <div class="blog__content">
-                        <div class="blog__date">34 item</div>
-                        <h3><a href="  <?= base_url("Jenis/index") ?>">Estetisisme</a></h3>
+                        <div class="blog__date"><?= $data->total?> item</div>
+                        <h3><a href=" <?= base_url('Jenis/index/'.$data->id_jenis) ?>"><?= $data->nama_jenis?></a></h3>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="blog__item set-bg" data-setbg="<?php echo base_url();?>assets/img/blog/2.jpg">
-                    <div class="blog__content">
-                        <div class="blog__date">89 item</div>
-                        <h3><a href="  <?= base_url("Jenis/index") ?>">Seni Modern</a></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="blog__item set-bg" data-setbg="<?php echo base_url();?>assets/img/blog/3.jpg">
-                    <div class="blog__content">
-                        <div class="blog__date">13 item</div>
-                        <h3><a href="  <?= base_url("Jenis/index") ?>">Modern</a></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="blog__item set-bg" data-setbg="<?php echo base_url();?>assets/img/blog/2.jpg">
-                    <div class="blog__content">
-                        <div class="blog__date">89 item</div>
-                        <h3><a href="  <?= base_url("Jenis/index") ?>">Seni Modern</a></h3>
-                    </div>
-                </div>
-            </div>
+		<?php } ?>
         </div>
     </div>
     <!-- waktu -->

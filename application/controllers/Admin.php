@@ -93,8 +93,36 @@ class Admin extends CI_Controller {
 			"tanggal_lahir" => $tanggal_lahir
 		);
 
-		$this->m_item->input_seniman($data);
+		$this->m_item->input_data('m_seniman',$data);
 		redirect('Home/index');
-		// wkwkwwkwk
 	}
+	public function input_media()
+	{
+		$nama = $this->input->post('namaMedia');
+		$deskripsi = $this->input->post('deskMedia');
+
+		$data = array(
+			"nama_media" => $nama,
+			"desk_media" => $deskripsi
+		);
+
+		$this->m_item->input_data('m_media',$data);
+		redirect('Home/index');
+	}
+	public function input_jenis()
+	{
+		$nama = $this->input->post('namaJenis');
+		$deskripsi = $this->input->post('deskJenis');
+		$tahun = $this->input->post('tahunJenis');
+
+		$data = array(
+			"nama_jenis" => $nama,
+			"desk_jenis" => $deskripsi,
+			"tahun_awal" => $tahun
+		);
+
+		$this->m_item->input_data('m_jenis',$data);
+		redirect('Home/index');
+	}
+	
 }

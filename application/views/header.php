@@ -26,9 +26,9 @@
 </head>
 <body>
 	<!-- Page Preloder -->
-	<div id="preloder">
+	<!-- <div id="preloder">
 		<div class="loader"></div>
-	</div>
+	</div> -->
 
 	<!-- Header Section -->
 	<header class="header">
@@ -56,7 +56,7 @@
 			</div>
 			<nav class="main__menu">
 				<ul class="nav__menu">
-					<li><a href="<?= base_url("home/index") ?>" >Home</a></li>
+					<li><a href="<?= base_url("home/index/") ?>" >Home</a></li>
 					<?php  if($this->session->userdata('username') == FALSE){?>
 						<li><a href="<?= base_url("auth/index") ?>">Login</a></li>
 					<?php } else  if($this->session->userdata('username') == TRUE){?>

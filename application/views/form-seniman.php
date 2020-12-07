@@ -18,14 +18,14 @@
                         <div class="valid-feedback">
                           Bagus !
                         </div>
-					  </div>
-					  <div class="col-md-12 mb-3">
+											</div>
+											<div class="col-md-12 mb-3">
                         <label for="tglSeniman"><h4>Tanggal Lahir</h4></label>
                         <input type="date" class="form-control" id="tglSeniman" name="tglSeniman"  placeholder="Tanggal Lahir" value="" required>
                         <div class="valid-feedback">
                           Bagus !
                         </div>
-					  </div>
+					  					</div>
                     <button class="btn btn-success ml-auto" type="submit">Simpan</button>
                   </form>
             </blockquote>

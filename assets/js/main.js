@@ -256,6 +256,6 @@ $('.message a').click(function(){
 	$('form').animate({height: "toggle", opacity: "toggle"}, "slow");
  });
 // like button
-document.querySelector('.like-button').addEventListener('click', (e) => {
-	e.currentTarget.classList.toggle('liked');
-  });
+// document.querySelector('.like-button').addEventListener('click', (e) => {
+// 	e.currentTarget.classList.toggle('liked');
+//   });
