@@ -123,10 +123,7 @@ class M_item extends CI_Model{
 	}
 	// =============================== List ===========================
 	public function get_list($table){
-		$this->db->select('*');
-		$this->db->from($table);
-
-		return $this->db->get()->result_array();
+		return $this->db->query("SELECT * from $table")->result();
 	}
 	// detail
 	public function get_detail($table,$kolom,$id){
@@ -136,6 +133,11 @@ class M_item extends CI_Model{
 
 		return $this->db->get()->result_array();
 	}
-
+	public function get_all_artikel() {
+		return $this->db->query("SELECT a.id_artikel,a.judul,a.deskripsi,b.nama_seniman,c.nama_galeri,d.nama_media,e.nama_jenis FROM tr_artikel as a LEFT JOIN m_seniman AS b ON a.id_seniman=b.id_seniman JOIN m_galeri AS c ON a.id_galeri=c.id_galeri JOIN m_media AS d ON a.id_media=d.id_media JOIN m_jenis AS e ON a.id_jenis=e.id_jenis ")->result();
+	}
+	public function get_all_art() {
+		return $this->db->query("SELECT * FROM tr_artikel AS a RIGHT JOIN tr_art AS b ON a.id_artikel=b.id_artikel")->result();
+	}
 }
 ?>

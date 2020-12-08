@@ -27,4 +27,29 @@ class Seniman extends CI_Controller {
 		$this->load->view('Seniman');
 		$this->load->view('footer');
 	}
+	public function input_seniman()
+	{
+		$nama = $this->input->post('namaSeniman');
+		$deskripsi = $this->input->post('deskSeniman');
+		$tanggal_lahir = $this->input->post('tglSeniman');
+
+		$data = array(
+			"nama_seniman" => $nama,
+			"desk_seniman" => $deskripsi,
+			"tanggal_lahir" => $tanggal_lahir
+		);
+
+		$this->m_item->input_data('m_seniman',$data);
+		redirect('Home/index');
+	}
+	public function list_seniman()
+	{
+		$data = array(
+			"title" => "List Seniman"
+		  );
+		$data['seniman'] = $this->m_item->get_list('m_seniman');
+		$this->load->view('header', $data);
+		$this->load->view('list-seniman',$data);
+		$this->load->view('footer');
+	}
 }

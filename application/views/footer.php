@@ -21,6 +21,8 @@
 
 	<!--====== Javascripts & Jquery ======-->
 	<script src="<?php echo base_url();?>assets/js/vendor/jquery-3.2.1.min.js"></script>
+	<script src="<?php echo base_url();?>assets/js/vendor/popper.min.js"></script>
+	<script src="<?php echo base_url();?>assets/js/vendor/boostrap.min.js"></script>
 	<script src="<?php echo base_url();?>assets/js/jquery.slicknav.min.js"></script>
 	<script src="<?php echo base_url();?>assets/js/slick.min.js"></script>
 	<script src="<?php echo base_url();?>assets/js/fresco.min.js"></script>

@@ -1370,6 +1370,24 @@ only screen and (min-width: 576px) and (max-width: 767px) {
 .bg-secondary {
     background-color: #757575!important;
 }
+ .btn-primary {
+    background-color: #6777ef!important;
+}
+.btn-success {
+    background-color: #66bb6a!important;
+}
+.btn-info {
+    background-color: #3abaf4!important;
+}
+.btn-warning {
+    background-color: #ffa426!important;
+}
+.btn-danger {
+    background-color: #fc544b!important;
+}
+.btn-secondary {
+    background-color: #757575!important;
+}
 .plus-btn{
 	font-size: 30px;
 }

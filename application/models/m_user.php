@@ -13,7 +13,9 @@ class M_user extends CI_Model{
 	   public function get_user() {
 		 return $this->db->query("SELECT * from m_user")->result();
 	   }
-	 
+	   public function get_user_detail($id) {
+		return $this->db->query("SELECT * from m_user WHERE id_user = '$id' ")->result();
+	  }
 	   public function get_user_spec($username) {
 		 return $this->db->query("SELECT * from m_user where username = '$username'")->result();
 	   }
@@ -25,6 +27,10 @@ class M_user extends CI_Model{
 		public function update($id,$data) {
 			$this->db->where('id_user',$id);
 			return $this->db->update('m_user',$data);
+		}
+		public function delete($id) {
+			$this->db->where('id_user',$id);
+			return $this->db->delete('m_user');
 		}
 		
 

@@ -20,11 +20,22 @@ class Auth extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data = array(
+		$title = array(
 			"title" => "Login / Register"
 		  );
-		$this->load->view('header', $data);
+		$this->load->view('header', $title);
 		$this->load->view('login');
+		$this->load->view('footer');
+	}
+	public function profil()
+	{
+		$title = array(
+			"title" => "Profil"
+		  );
+		  $id = $this->session->userdata('id_user');
+		$data['user'] = $this->m_user->get_user_detail($id);
+		$this->load->view('header', $title);
+		$this->load->view('profil',$data);
 		$this->load->view('footer');
 	}
 	
@@ -39,7 +50,7 @@ class Auth extends CI_Controller {
 				if($login){
 				foreach ($login as $key) {
 					$dataUser = array(
-						'id' => $key->id,
+						'id_user' => $key->id_user,
 						'username' => $key->username,
 						'email' => $key->email,
 						'password' => $key->password,
@@ -69,7 +80,45 @@ class Auth extends CI_Controller {
 		$this->session->set_flashdata('success', 'Anda Berhasil Register ,Silahkan login ...');
 		  redirect(base_url());
 		}
-	
+		
+		public function delete($id) {
+			$this->m_user->delete($id);
+			// $this->session->set_flashdata('success', 'Anda Berhasil menghapus data ...');
+			redirect('admin/index/');
+		}
+		public function update($id)
+		{
+			$data = array(
+				"title" => "Update User"
+			  );
+			$data['user'] = $this->m_user->get_user_detail($id);
+		$this->load->view('header', $data);
+		$this->load->view('form-user',$data);
+		$this->load->view('footer');
+	}
+	public function do_update($id)
+		{
+			$data = array(
+				"title" => "Update User"
+			  );
+			  $username = $this->input->post("username");
+
+				$data = array(
+				'id_user' => $id,
+				'username' => $username,
+				'email' => $this->input->post('email'),
+				'password' => $this->input->post('password'),
+				'level' => $this->input->post('level') ,
+				);
+			$this->m_user->update($id,$data);
+			$this->session->set_userdata($data);
+			if($this->session->userdata('level','1')){
+				redirect('admin/index/');
+			}else {
+				redirect('auth/profil/');
+			}
+			
+	}
 		public function logout() {
 			$this->session->sess_destroy();
 			$this->session->set_flashdata('logout', 'logged_out');

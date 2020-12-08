@@ -56,20 +56,20 @@
 			</div>
 			<nav class="main__menu">
 				<ul class="nav__menu">
-					<li><a href="<?= base_url("home/index/") ?>" >Home</a></li>
+					<li><a href="<?= base_url() ?>" >Home</a></li>
 					<?php  if($this->session->userdata('username') == FALSE){?>
-						<li><a href="<?= base_url("auth/index") ?>">Login</a></li>
+						<li><a href="<?= base_url("auth/index/") ?>">Login</a></li>
 					<?php } else  if($this->session->userdata('username') == TRUE){?>
-					<li><a href="<?= base_url("auth/logout") ?>">Logout</a></li>
+					<li><a href="<?= base_url("auth/logout/") ?>">Logout</a></li>
 					<?php if($this->session->userdata('level', '1' )){?>
-					<li><a href="<?= base_url("admin/index") ?>">Admin</a></li>
+					<li><a href="<?= base_url("admin/index/") ?>">Admin</a></li>
 					<?php } else { ?>
-						<li><a href="<?= base_url("favorit/index") ?>">Favorit</a></li>
-					<?php }
-							} ?>
+						<li><a href="<?= base_url("favorit/index/") ?>">Favorit</a></li>
+						<li><a href="<?= base_url('auth/profil/')?>">Profil</a></li>
+					<?php } }?>
 					<!-- <li><a href="./blog.html">Blog</a>
 						<ul class="sub__menu">
-							<li><a href="<?= base_url("Artikel/index") ?>">Blog Single</a></li>
+							<li><a href="<?= base_url("Artikel/index/") ?>">Blog Single</a></li>
 						</ul>
 					</li>
 					<li><a href="./contact.html">Contact</a></li> -->

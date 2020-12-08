@@ -20,109 +20,132 @@ class Admin extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data = array(
+		$title = array(
 			"title" => "Admin"
 		  );
-		$this->load->view('header', $data);
-		$this->load->view('admin');
+		$data['user'] = $this->m_user->get_user();
+		$this->load->view('header', $title);
+		$this->load->view('admin',$data);
 		$this->load->view('footer');
 	}
+
 	public function artikel()
 	{
-		$data = array(
+		$title = array(
 			"title" => "Artikel"
 		  );
-		$this->load->view('header', $data);
+		$this->load->view('header', $title);
 		$this->load->view('form-artikel');
 		$this->load->view('footer');
 	}
 	public function art()
 	{
-		$data = array(
+		$title = array(
 			"title" => "Karya Seni"
 		  );
-		$this->load->view('header', $data);
+		$this->load->view('header', $title);
 		$this->load->view('form-art');
 		$this->load->view('footer');
 	}
 	public function galeri()
 	{
-		$data = array(
+		$title = array(
 			"title" => "Galeri"
 		  );
-		$this->load->view('header', $data);
+		$this->load->view('header', $title);
 		$this->load->view('form-galleri');
 		$this->load->view('footer');
 	}
 	public function media()
 	{
-		$data = array(
+		$title = array(
 			"title" => "Media"
 		  );
-		$this->load->view('header', $data);
+		$this->load->view('header', $title);
 		$this->load->view('form-media');
 		$this->load->view('footer');
 	}
 	public function seniman()
 	{
-		$data = array(
+		$title = array(
 			"title" => "Seniman"
 		  );
-		$this->load->view('header', $data);
+		$this->load->view('header', $title);
 		$this->load->view('form-seniman');
 		$this->load->view('footer');
 	}
 	public function jenis()
 	{
-		$data = array(
+		$title = array(
 			"title" => "Gerakan Seni"
 		  );
-		$this->load->view('header', $data);
+		$this->load->view('header', $title);
 		$this->load->view('form-jenis');
 		$this->load->view('footer');
 	}
-	public function input_seniman()
+
+
+	public function list_artikel()
 	{
-		$nama = $this->input->post('namaSeniman');
-		$deskripsi = $this->input->post('deskSeniman');
-		$tanggal_lahir = $this->input->post('tglSeniman');
-
-		$data = array(
-			"nama_seniman" => $nama,
-			"desk_seniman" => $deskripsi,
-			"tanggal_lahir" => $tanggal_lahir
-		);
-
-		$this->m_item->input_data('m_seniman',$data);
-		redirect('Home/index');
+		$title = array(
+			"title" => "Daftar Artikel"
+		  );
+		 
+		$this->load->view('header', $title);
+		$this->load->view('list-artikel');
+		$this->load->view('footer');
 	}
-	public function input_media()
+	public function list_art()
 	{
-		$nama = $this->input->post('namaMedia');
-		$deskripsi = $this->input->post('deskMedia');
-
-		$data = array(
-			"nama_media" => $nama,
-			"desk_media" => $deskripsi
-		);
-
-		$this->m_item->input_data('m_media',$data);
-		redirect('Home/index');
+		$title = array(
+			"title" => "Daftar Karya Seni"
+		  );
+		$this->load->view('header', $title);
+		$this->load->view('list-art');
+		$this->load->view('footer');
 	}
-	public function input_jenis()
+	public function list_galeri()
 	{
-		$nama = $this->input->post('namaJenis');
-		$deskripsi = $this->input->post('deskJenis');
-		$tahun = $this->input->post('tahunJenis');
+		$title = array(
+			"title" => "Daftar Galeri"
+		  );
 
-		$data = array(
-			"nama_jenis" => $nama,
-			"desk_jenis" => $deskripsi,
-			"tahun_awal" => $tahun
-		);
+		$data['galeri'] = $this->m_item->get_list('m_galeri');
 
-		$this->m_item->input_data('m_jenis',$data);
-		redirect('Home/index');
+		$this->load->view('header', $title);
+		$this->load->view('list-galeri',$data);
+		$this->load->view('footer');
 	}
+	public function list_media()
+	{
+		$title = array(
+			"title" => "Daftar Media"
+		  );
+		  $data['media'] = $this->m_item->get_list('m_media');
+		$this->load->view('header', $title);
+		$this->load->view('list-media',$data);
+		$this->load->view('footer');
+	}
+	public function list_seniman()
+	{
+		$title = array(
+			"title" => "Daftar Seniman"
+		  );
+		  $data['seniman'] = $this->m_item->get_list('m_seniman');
+		$this->load->view('header', $title);
+		$this->load->view('list-seniman',$data);
+		$this->load->view('footer');
+	}
+	public function list_jenis()
+	{
+		$title = array(
+			"title" => "Daftar Gerakan Seni"
+		  );
+		  $data['jenis'] = $this->m_item->get_list('m_jenis');
+		$this->load->view('header', $title);
+		$this->load->view('list-jenis',$data);
+		$this->load->view('footer');
+	}
+
 	
 }
