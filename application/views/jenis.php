@@ -1,5 +1,4 @@
 
-
 	<!-- Blog Page -->
 	<div class="blog__single__page">
 		<article class="blog__article">
@@ -13,9 +12,6 @@
 					</div>
 				</div>
 				<p class="text-center"><?= $data->desk_jenis ?></p>
-				<div class="text-left float-left mr-auto">
-					<button class="btn btn-primary"><i class="fa fa-edit"></i> Update</button>
-				</div>
 				<div class="text-right float-right">
 					<button class="like-button"></button>
 				</div>
@@ -28,7 +24,6 @@
 					</div>
 					<hr class="w-100">
 				</div>
-				
 				<div class="artikel__slider">
 					<div class="blog__slider__item p-3">
 						<a href="<?= base_url("Artikel/index") ?>">

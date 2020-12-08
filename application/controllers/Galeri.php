@@ -27,4 +27,5 @@ class Galeri extends CI_Controller {
 		$this->load->view('Galeri');
 		$this->load->view('footer');
 	}
+	
 }

@@ -53,7 +53,7 @@ class Admin extends CI_Controller {
 			"title" => "Galeri"
 		  );
 		$this->load->view('header', $title);
-		$this->load->view('form-galleri');
+		$this->load->view('input-galeri');
 		$this->load->view('footer');
 	}
 	public function media()
@@ -146,6 +146,45 @@ class Admin extends CI_Controller {
 		$this->load->view('list-jenis',$data);
 		$this->load->view('footer');
 	}
+	// INSERT
+	public function insert_galeri(){
+		$nama = $this->input->post('namaGaleri');
+		$deskripsi = $this->input->post('deskGaleri');
+		$kota = $this->input->post('kota');
+		$negara = $this->input->post('negara');
 
+		$config['upload_path'] = './images/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = 2000;
+        $config['max_width'] = 1500;
+        $config['max_height'] = 1500;
+
+		$this->load->library('upload', $config);
+		
+		$file = $this->upload->data();
+		$gambar = $file['logoGaleri'];
+
+		$data = array(
+			"nama_galeri" => $nama,
+			"desk_galeri" => $deskripsi,
+			"kota" => $kota,
+			"negara" => $negara,
+			"logo" => $foto
+		);
+		
+		$this->m_item->input_data('m_galeri',$data);
+		redirect('admin/list-galeri/');
+	}
+	// UPDATE
+	public function update_galeri($id){
+
+		$data['galeri'] = $this->m_item->get_galeri($id);
+		$title = array(
+			"title" => "Galeri"
+		  );
+		$this->load->view('header', $title);
+		$this->load->view('form-galleri',$data);
+		$this->load->view('footer');
+	}
 	
 }
