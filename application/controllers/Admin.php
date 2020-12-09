@@ -90,9 +90,9 @@ class Admin extends CI_Controller {
 		$title = array(
 			"title" => "Daftar Artikel"
 		  );
-		 
+		  $data['artikel'] = $this->m_item->get_all_artikel();
 		$this->load->view('header', $title);
-		$this->load->view('list-artikel');
+		$this->load->view('list-artikel',$data);
 		$this->load->view('footer');
 	}
 	public function list_art()
@@ -100,8 +100,9 @@ class Admin extends CI_Controller {
 		$title = array(
 			"title" => "Daftar Karya Seni"
 		  );
+		$data['art'] = $this->m_item->get_all_art();
 		$this->load->view('header', $title);
-		$this->load->view('list-art');
+		$this->load->view('list-art',$data);
 		$this->load->view('footer');
 	}
 	public function list_galeri()
@@ -185,10 +186,10 @@ class Admin extends CI_Controller {
 			$this->m_item->input_data('m_galeri',$data);
 			redirect('admin/list_galeri/');
 		
-		
 	}
 	// UPDATE
 	public function update_galeri($id){
+
 
 		$data['galeri'] = $this->m_item->get_galeri($id);
 		$title = array(
@@ -197,6 +198,28 @@ class Admin extends CI_Controller {
 		$this->load->view('header', $title);
 		$this->load->view('form-galleri',$data);
 		$this->load->view('footer');
+	}
+
+	public function do_update($id){
+		
+		$nama = $this->input->post('namaGaleri');
+		$deskripsi = $this->input->post('deskGaleri');
+		$kota = $this->input->post('kota');
+		$negara = $this->input->post('negara');
+
+		$foto =  $this->do_upload();
+
+			$data = array(
+				"nama_galeri" => $nama,
+				"desk_galeri" => $deskripsi,
+				"kota" => $kota,
+				"negara" => $negara,
+				"foto" => $foto
+			);
+		
+		$this->m_item->update_data('m_galeri','id_galeri',$id,$data);
+		redirect('admin/list_galeri/');
+		
 	}
 	
 }

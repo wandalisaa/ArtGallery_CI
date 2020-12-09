@@ -18,13 +18,16 @@ class Art extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function index($id)
 	{
-		$data = array(
+		$title = array(
 			"title" => "Karya Seni"
 		  );
-		$this->load->view('header', $data);
-		$this->load->view('art');
+		$data['art'] = $this->m_item->get_art($id);
+		$data['other'] = $this->m_item->get_list_art($id);
+
+		$this->load->view('header', $title);
+		$this->load->view('art',$data);
 		$this->load->view('footer');
 	}
 }

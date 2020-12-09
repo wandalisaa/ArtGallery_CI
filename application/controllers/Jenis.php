@@ -20,14 +20,16 @@ class Jenis extends CI_Controller {
 	 */
 	public function index($id)
 	{
-		$data = array(
+		$title= array(
 			"title" => "Gerakan Seni"
 		  );
 
 		$data['jenis'] = $this->m_item->get_jenis($id);
-
-		$this->load->view('header', $data);
-		$this->load->view('jenis');
+		$data['artikel'] = $this->m_item->get_artikel_terkait('m_jenis','id_jenis',$id);
+		$data['art'] = $this->m_item->get_art_terkait('m_jenis','id_jenis',$id);
+		$data['other'] = $this->m_item->get_other('m_jenis','id_jenis',$id);
+		$this->load->view('header', $title);
+		$this->load->view('jenis',$data);
 		$this->load->view('footer');
 	}
 }

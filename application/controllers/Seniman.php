@@ -18,13 +18,17 @@ class Seniman extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function index($id)
 	{
-		$data = array(
+		$title = array(
 			"title" => "Seniman"
 		  );
-		$this->load->view('header', $data);
-		$this->load->view('Seniman');
+		  $data['seniman'] = $this->m_item->get_seniman($id);
+		  $data['artikel'] = $this->m_item->get_artikel_terkait('m_seniman','id_seniman',$id);
+		  $data['art'] = $this->m_item->get_art_terkait('m_seniman','id_seniman',$id);
+		  $data['other'] = $this->m_item->get_other('m_seniman','id_seniman',$id);
+		$this->load->view('header', $title);
+		$this->load->view('Seniman',$data);
 		$this->load->view('footer');
 	}
 	public function input_seniman()

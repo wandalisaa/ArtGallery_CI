@@ -18,13 +18,18 @@ class Galeri extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function index($id)
 	{
-		$data = array(
+		$title = array(
 			"title" => "Galeri"
 		  );
-		$this->load->view('header', $data);
-		$this->load->view('Galeri');
+
+		$data['galeri'] = $this->m_item->get_galeri($id);
+		$data['artikel'] = $this->m_item->get_artikel_terkait('m_galeri','id_galeri',$id);
+		$data['art'] = $this->m_item->get_art_terkait('m_galeri','id_galeri',$id);
+		$data['other'] = $this->m_item->get_other('m_galeri','id_galeri',$id);
+		$this->load->view('header', $title);
+		$this->load->view('Galeri',$data);
 		$this->load->view('footer');
 	}
 	

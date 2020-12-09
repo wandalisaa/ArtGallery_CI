@@ -400,7 +400,7 @@ ol {
 
 @media (max-width: 576px) {
 	.main__menu .nav__menu {
-		display: none;
+		display: block;
 	}
 }
 
@@ -1257,7 +1257,6 @@ only screen and (min-width: 576px) and (max-width: 767px) {
 	text-align: center;
 	width: 100px;
 	height: 100px;
-	background-image: url("../img/art-and-design.ico");
 	background-size: contain;
 }
 /* login regis */

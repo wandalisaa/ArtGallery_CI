@@ -1,95 +1,66 @@
 
-
 	<!-- Blog Page -->
 	<div class="blog__single__page">
 		<article class="blog__article pt-5">
+		<?php foreach($art as $data){ ?>
 			<blockquote class="shadow bg-white">
-				<div class="text-left float-left mr-auto">
-					<button class="btn btn-primary"><i class="fa fa-edit"></i> Update</button>
-				</div>
 				<div class="text-right float-right">
 					<button class="like-button" ></button>
 				</div>
-				<h3 class="text-center title py-3">At the Moulin Rouge</h3>
+				<h3 class="text-center title py-3"><?=$data->judul_art?></h3>
 				<div class="blog__banner pb-4">
-					<img src="img/blog-single/2.jpg" alt="">
+					<img src="<?=$data->gambar?>" alt="">
 				</div>
 				<div class="row mb-3">
 					<div class="text-left mr-auto">
-						<a href="<?= base_url("Seniman/index") ?>">
-							<h5>At the Moulin Rouge</h5>
-							<span>Henri de Toulouse-Lautrec </span>	
+						<a href="<?= base_url("Seniman/index/".$data->id_seniman) ?>">
+							<h5><?=$data->judul_art?></h5>
+							<span><?=$data->nama_seniman?> </span>	
 						</a>
 					</div>
 					<div class="text-right">
-						<a href="<?= base_url("Galeri/index") ?>">
-							<h5>The Art Institute of Chicago</h5>
-							<span>Chicago , Amerika Serikat</span>
+						<a href="<?= base_url("Galeri/index/".$data->id_galeri) ?>">
+							<h5><?=$data->nama_galeri?></h5>
+							<span><?=$data->kota?>,<?=$data->negara?></span>
 						</a>
 					</div>
 				</div>
-				<p class="text-center">Sed dignissim justo. Suspendisse fermentum erat. Duis consequat tortor. Mauris ut tellus a dolor.
-					Suspendisse nec tellus. Donec quis lacus magna, sollicitudin id, turpis. Mauris in velit vel
-					sollicitudin justo. Proin vitae massa nec cursus magna. Fusce blandit eu, ullamcorper in.</p>
+				<p class="text-center"><?=$data->desk_art?></p>
 					<h3 class="my-3">Detail</h3>
 					<p>
-						<b>Judul:</b><span>At the Moulin Rouge</span><br>
-						<b>Tahun Dibuat:</b><span>1892/95</span><br>
-						<b>Seniman:</b><a href="<?= base_url("Seniman/index") ?>">Henri de Toulouse-Lautrec</a><br>
+						<b>Judul:</b><span><?=$data->judul_art?></span><br>
+						<b>Tahun Dibuat:</b><span><?=$data->tahun_dibuat?></span><br>
+						<b>Seniman:</b><a href="<?= base_url("Seniman/index/".$data->id_seniman) ?>"><?=$data->nama_seniman?></a><br>
 						<b>Dimensi:</b><span> 48 7/16 × 55 1/2 in. (123 × 141 cm)</span><br>
-						<b>Jenis:</b><a href="  <?= base_url("Jenis/index") ?>">Painting</a><br>
-						<b>Media:</b><a href="<?= base_url("Media/index") ?>"> Oil on canvas</a><br>
-						<b>Credit:</b><a href="<?= base_url("Galeri/index") ?>">The Art Institute of Chicago</a><br>
+						<b>Jenis:</b><a href="  <?= base_url("Jenis/index/".$data->id_jenis) ?>"><?=$data->nama_jenis?></a><br>
+						<b>Media:</b><a href="<?= base_url("Media/index/".$data->id_media) ?>"><?=$data->nama_media?></a><br>
+						<b>Credit:</b><a href="<?= base_url("Galeri/index".$data->id_galeri) ?>"><?=$data->nama_galeri?></a><br>
 					</p>
 			</blockquote>
-			<div class="container recent__post">
+<?php } ?>
+			<div class="container">
 				<div class="text-center">
 					<h2>Karya Seni Lainnya</h2>
 				</div>
-				<div class="row">
-					<div class="col-md-3">
-						<a href="<?= base_url("Art/index") ?>">
-							<div class="blog__item set-bg" data-setbg="img/blog/4.jpg">
-								<div class="blog__content text-white">
-									<div class="blog__date">123 item</div>
-									<h4>Seni Kontemporer</h4>
-								</div>
-							</div>
-						</a>
+
+				<div class="row w-100">
+				<section class="hero__section w-100" >
+					<div class="hero-slider">
+						<?php foreach( $other as $data ){?>
+						<div class="slide-item text-center">
+							<a href="<?= base_url('art/index/'.$data->id_art) ?>">
+								<img src="<?= $data->gambar ?>" alt="">
+							</a>
+							<a href="<?= base_url('art/index/'.$data->id_art) ?>">
+								<h2><?= $data->judul_art?></h2>
+							</a>
+						</div>
+						<?php } ?>
 					</div>
-					<div class="col-md-3">
-						<a href="<?= base_url("Art/index") ?>">
-							<div class="blog__item set-bg" data-setbg="img/blog/2.jpg">
-								<div class="blog__content text-white">
-									<div class="blog__date">123 item</div>
-									<h4>Seni Kontemporer</h4>
-								</div>
-							</div>
-						</a>
+					<div class="hero-text-slider">
 					</div>
-					<div class="col-md-3">
-						<a href="<?= base_url("Art/index") ?>">
-							<div class="blog__item set-bg" data-setbg="img/blog/3.jpg">
-								<div class="blog__content text-white">
-									<div class="blog__date">123 item</div>
-									<h4>Seni Kontemporer</h4>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-3">
-						<a href="<?= base_url("Art/index") ?>">
-							<div class="blog__item set-bg" data-setbg="img/blog/3.jpg">
-								<div class="blog__content text-white">
-									<div class="blog__date">123 item</div>
-									<h4>Seni Kontemporer</h4>
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
+				</section>
 			</div>
 		</article>
 	</div>
 	<!-- Blog Page end -->
- 

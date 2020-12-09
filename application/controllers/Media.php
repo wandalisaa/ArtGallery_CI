@@ -18,13 +18,17 @@ class Media extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function index($id)
 	{
-		$data = array(
+		$title = array(
 			"title" => "Media"
 		  );
-		$this->load->view('header', $data);
-		$this->load->view('media');
+		  $data['media'] = $this->m_item->get_media($id);
+		  $data['artikel'] = $this->m_item->get_artikel_terkait('m_media','id_media',$id);
+		  $data['art'] = $this->m_item->get_art_terkait('m_media','id_media',$id);
+		  $data['other'] = $this->m_item->get_other('m_media','id_media',$id);
+		$this->load->view('header', $title);
+		$this->load->view('media',$data);
 		$this->load->view('footer');
 	}
 }

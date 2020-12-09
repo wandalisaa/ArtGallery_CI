@@ -148,9 +148,9 @@ $(window).on('load', function() {
 		infinite: true,
 		speed: 300,
 		arrows: false,
-		centerMode: true,
+		centerMode: false,
 		centerPadding: '190px',
-		slidesToShow: 2,
+		slidesToShow: 5,
 		autoplay: true,
 		pauseOnHover:false,
 		responsive: [
@@ -158,8 +158,8 @@ $(window).on('load', function() {
 				breakpoint: 991,
 				settings: {
 				centerPadding: '0',
-				slidesToShow: 2,
-				slidesToScroll: 2
+				slidesToShow: 1,
+				slidesToScroll: 1
 				}
 			},
 			{
@@ -183,7 +183,7 @@ $(window).on('load', function() {
 		arrows: false,
 		centerMode: false,
 		centerPadding: '190px',
-		slidesToShow: 4,
+		slidesToShow: 3,
 		autoplay: false,
 		pauseOnHover:false,
 		responsive: [
@@ -191,16 +191,16 @@ $(window).on('load', function() {
 				breakpoint: 991,
 				settings: {
 				centerPadding: '0',
-				slidesToShow: 10,
-				slidesToScroll: 10
+				slidesToShow: 1,
+				slidesToScroll: 1
 				}
 			},
 			{
 				breakpoint: 480,
 				settings: {
 					centerMode: false,
-					slidesToShow: 5,
-					slidesToScroll: 5,
+					slidesToShow: 1,
+					slidesToScroll: 1,
 					centerPadding: '0',
 				}
 			}

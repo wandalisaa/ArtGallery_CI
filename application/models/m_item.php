@@ -81,9 +81,20 @@ class M_item extends CI_Model{
 	}
 	// karya seni lainnya
 	public function get_list_art($id) {
-		return $this->db->query("SELECT b.id_art,b.judul_art,b.gambar FROM tr_artikel AS a RIGHT JOIN tr_art AS b ON a.id_artikel=b.id_artikel WHERE b.id_art != $id")->result();
+		return $this->db->query("SELECT b.id_art,b.judul_art,b.gambar FROM tr_artikel AS a RIGHT JOIN tr_art AS b ON a.id_artikel=b.id_artikel WHERE b.id_art != $id ORDER BY b.id_art DESC LIMIT 5")->result();
 	}
-
+// ===================================== artikel terkait =====================================
+public function get_artikel_terkait($table,$kolom,$id) {
+	return $this->db->query("SELECT a.id_artikel,a.judul,b.id_galeri,b.nama_galeri,c.gambar FROM tr_artikel AS a LEFT JOIN $table AS t ON a.$kolom = t.$kolom JOIN m_galeri AS b ON a.id_galeri=b.id_galeri JOIN tr_art AS c ON a.id_artikel=c.id_artikel WHERE a.$kolom = $id GROUP BY a.id_artikel")->result();
+}
+// ===================================== karya seni terkait =====================================
+public function get_art_terkait($table,$kolom,$id) {
+	return $this->db->query("SELECT c.id_art,c.judul_art,c.gambar FROM $table AS a INNER JOIN tr_artikel AS b ON a.$kolom=b.$kolom RIGHT JOIN tr_art AS c ON b.id_artikel=c.id_artikel WHERE a.$kolom = $id")->result();
+}
+// =================================== get other ========================================
+public function get_other($table,$kolom,$id) {
+	return $this->db->query("SELECT * FROM $table AS a LEFT JOIN tr_artikel AS b ON a.$kolom = b.$kolom RIGHT JOIN tr_art AS c ON b.id_artikel = c.id_artikel WHERE a.$kolom !=  $id GROUP BY a.$kolom ORDER BY a.$kolom DESC LIMIT 4 ")->result();
+}
 
 	// ================================================ INSERT ===================================================
 
