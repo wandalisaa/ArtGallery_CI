@@ -146,6 +146,25 @@ class Admin extends CI_Controller {
 		$this->load->view('list-jenis',$data);
 		$this->load->view('footer');
 	}
+
+	// UPLOAD GAMBAR
+	public function do_upload()
+	{
+		$url = "../images";
+		$image=basename($_FILES['logoGaleri']['name']);
+		$image=str_replace(' ','|',$image);
+		$type = explode(".",$image);
+		$type = $type[count($type)-1];
+		if (in_array($type,array('jpg','jpeg','png','gif')))
+		{
+			$tmppath="images/".uniqid(rand()).".".$type;
+			if(is_uploaded_file($_FILES["logoGaleri"]["tmp_name"]))
+			{
+				move_uploaded_file($_FILES['logoGaleri']['tmp_name'],$tmppath);
+				return $tmppath;
+			}
+		}
+	}
 	// INSERT
 	public function insert_galeri(){
 		$nama = $this->input->post('namaGaleri');
@@ -153,27 +172,20 @@ class Admin extends CI_Controller {
 		$kota = $this->input->post('kota');
 		$negara = $this->input->post('negara');
 
-		$config['upload_path'] = './images/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = 2000;
-        $config['max_width'] = 1500;
-        $config['max_height'] = 1500;
+		$foto = $this->do_upload();
 
-		$this->load->library('upload', $config);
+			$data = array(
+				"nama_galeri" => $nama,
+				"desk_galeri" => $deskripsi,
+				"kota" => $kota,
+				"negara" => $negara,
+				"foto" => $foto
+			);
 		
-		$file = $this->upload->data();
-		$gambar = $file['logoGaleri'];
-
-		$data = array(
-			"nama_galeri" => $nama,
-			"desk_galeri" => $deskripsi,
-			"kota" => $kota,
-			"negara" => $negara,
-			"logo" => $foto
-		);
+			$this->m_item->input_data('m_galeri',$data);
+			redirect('admin/list_galeri/');
 		
-		$this->m_item->input_data('m_galeri',$data);
-		redirect('admin/list-galeri/');
+		
 	}
 	// UPDATE
 	public function update_galeri($id){

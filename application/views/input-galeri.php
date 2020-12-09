@@ -6,7 +6,7 @@
     <div class="blog__single__page">
 		<article class="blog__article pt-3">
 			<blockquote class="shadow bg-white">
-				<form class="needs-validation" method="post" action="<?=base_url('admin/insert_galeri')?>" enctype="multipart/form-data" novalidate>
+				<form class="needs-validation" method="post" action="<?=base_url('admin/insert_galeri/')?>" enctype="multipart/form-data" novalidate>
                     <div class="form-row">
                       <div class="col-md-12 mb-3">
                         <label for="namaGaleri"><h4>Nama Galeri</h4></label>
