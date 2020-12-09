@@ -209,13 +209,20 @@ class Admin extends CI_Controller {
 
 		$foto =  $this->do_upload();
 
-			$data = array(
-				"nama_galeri" => $nama,
-				"desk_galeri" => $deskripsi,
-				"kota" => $kota,
-				"negara" => $negara,
+		$data = array(
+			"nama_galeri" => $nama,
+			"desk_galeri" => $deskripsi,
+			"kota" => $kota,
+			"negara" => $negara,
+		);
+
+		if (empty($foto)) {
+			# code...
+		} else {
+			$data += array(
 				"foto" => $foto
 			);
+		}
 		
 		$this->m_item->update_data('m_galeri','id_galeri',$id,$data);
 		redirect('admin/list_galeri/');

@@ -33,9 +33,11 @@
                         </div>
 									</div>
 					  </div>
+
+            <img class="img-thumbnail" src='<?= base_url().$data->foto ?>'>
 					  <div class="col-md-12 mb-3">
 						<div class="custom-file">
-							<input type="file" class="custom-file-input" id="logoGaleri" name="logoGaleri">
+							<input type="file" class="custom-file-input" id="logoGaleri" name="logoGaleri" value="<?= set_value($data->foto) ?>">
 							<label class="custom-file-label" for="logoGaleri">Tambah Logo</label>
 						  </div>
 					  </div>
