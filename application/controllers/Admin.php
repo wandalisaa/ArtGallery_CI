@@ -166,67 +166,6 @@ class Admin extends CI_Controller {
 			}
 		}
 	}
-	// INSERT
-	public function insert_galeri(){
-		$nama = $this->input->post('namaGaleri');
-		$deskripsi = $this->input->post('deskGaleri');
-		$kota = $this->input->post('kota');
-		$negara = $this->input->post('negara');
 
-		$foto = $this->do_upload();
-
-			$data = array(
-				"nama_galeri" => $nama,
-				"desk_galeri" => $deskripsi,
-				"kota" => $kota,
-				"negara" => $negara,
-				"foto" => $foto
-			);
-		
-			$this->m_item->input_data('m_galeri',$data);
-			redirect('admin/list_galeri/');
-		
-	}
-	// UPDATE
-	public function update_galeri($id){
-
-
-		$data['galeri'] = $this->m_item->get_galeri($id);
-		$title = array(
-			"title" => "Galeri"
-		  );
-		$this->load->view('header', $title);
-		$this->load->view('form-galleri',$data);
-		$this->load->view('footer');
-	}
-
-	public function do_update($id){
-		
-		$nama = $this->input->post('namaGaleri');
-		$deskripsi = $this->input->post('deskGaleri');
-		$kota = $this->input->post('kota');
-		$negara = $this->input->post('negara');
-
-		$foto =  $this->do_upload();
-
-		$data = array(
-			"nama_galeri" => $nama,
-			"desk_galeri" => $deskripsi,
-			"kota" => $kota,
-			"negara" => $negara,
-		);
-
-		if (empty($foto)) {
-			# code...
-		} else {
-			$data += array(
-				"foto" => $foto
-			);
-		}
-		
-		$this->m_item->update_data('m_galeri','id_galeri',$id,$data);
-		redirect('admin/list_galeri/');
-		
-	}
 	
 }

@@ -20,15 +20,15 @@ class Home extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data = array(
+		$title = array(
 			"page" => "Home",
 			"title" => "Gerakan Seni"
 		  );
 		$data['jenis'] = $this->m_item->get_list_jenis();
 		$data['semuajenis'] = $this->m_item->get_all_jenis();
 		
-		$this->load->view('header', $data);
-		$this->load->view('index');
+		$this->load->view('header', $title);
+		$this->load->view('index', $data);
 		$this->load->view('footer');
 	}
 }

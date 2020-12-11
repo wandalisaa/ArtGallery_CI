@@ -133,7 +133,7 @@
 						<td><?=$data->email?></td>
 						<td>
 							<?php if($data->level != '1'){?>
-							<a onclick="return confirm('Anda Yakin ingin menghapus <?=$data->username?> Hapus?')" href="<?= base_url('Auth/delete/'.$data->id_user) ?>" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="hapus"><i class="fa fa-trash"></i></a>
+							<a onclick="return confirm('Anda Yakin ingin menghapus user <?=$data->username?> ?')" href="<?= base_url('Auth/delete/'.$data->id_user) ?>" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="hapus"><i class="fa fa-trash"></i></a>
 							<?php } else { ?>
 								<a href="<?= base_url('Auth/update/'.$data->id_user) ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-edit"></i></a>
 							<?php } ?>

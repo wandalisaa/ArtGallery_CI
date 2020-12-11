@@ -56,18 +56,17 @@
 					<h2>Galeri Lainnya</h2>
 				</div>
 				<div class="row">
-
+				<?php foreach($other as $data){?>
 					<div class="col-md-3">
 						<a href="<?= base_url("Artikel/index") ?>">
-							<div class="blog__item set-bg" data-setbg="img/blog/4.jpg">
+							<div class="blog__item set-bg" data-setbg="<?=$data->gambar?>">
 								<div class="blog__content text-white">
-									<div class="blog__date">123 item</div>
-									<h4>Seni Kontemporer</h4>
+									<h4><?=$data->nama_galeri?></h4>
 								</div>
 							</div>
 						</a>
 					</div>
-
+					<?php } ?>
 				</div>
 			</div>
 		</article>

@@ -111,7 +111,7 @@ public function get_other($table,$kolom,$id) {
 	}
 	// ================================================== DELETE ============================================
 
-	public function delete_data($table,$id,$kolom) {
+	public function delete_data($table,$kolom,$id) {
 		$this->db->where($kolom,$id);
 		return $this->db->delete($table);
 	}
