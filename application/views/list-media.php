@@ -16,9 +16,9 @@
 						<th scope="row"><?=$no; $no++ ;?></th>
 						<td><?=$data->nama_media?></td>
 						<td>
-							<a href="" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="edit"><i class="fa fa-edit"></i></a>
-							<a href="" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="detail"><i class="fa fa-eye"></i></a>
-							<a href="" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="hapus"><i class="fa fa-trash"></i></a>
+							<a href="<?= base_url('media/update_media/'.$data->id_media) ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="edit"><i class="fa fa-edit"></i></a>
+							<a href="<?= base_url('media/index/'.$data->id_media) ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="detail"><i class="fa fa-eye"></i></a>
+							<a href="<?= base_url('media/delete_media/'.$data->id_media) ?>" onclick="return confirm('Apakah Anda Yakin ingin mengapus media <?=$data->nama_media?>?');" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="hapus"><i class="fa fa-trash"></i></a>
 						</td>
 					  </tr>
 					  <?php } ?>

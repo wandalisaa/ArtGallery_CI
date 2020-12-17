@@ -18,9 +18,9 @@
 						<td><?=$data->nama_jenis?></td>
 						<td><?=$data->tahun_awal?></td>
 						<td>
-							<a href="" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="edit"><i class="fa fa-edit"></i></a>
-							<a href="" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="detail"><i class="fa fa-eye"></i></a>
-							<a href="" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="hapus"><i class="fa fa-trash"></i></a>
+							<a href="<?= base_url('jenis/update_jenis/'.$data->id_jenis) ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="edit"><i class="fa fa-edit"></i></a>
+							<a href="<?= base_url('jenis/index/'.$data->id_jenis) ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="detail"><i class="fa fa-eye"></i></a>
+							<a href="<?= base_url('jenis/delete_jenis/'.$data->id_jenis) ?>" onclick="return confirm('Apakah Anda Yakin ingin mengapus jenis <?=$data->nama_jenis?>?');" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="hapus"><i class="fa fa-trash"></i></a>
 						</td>
 					  </tr>
 					  <?php } ?>

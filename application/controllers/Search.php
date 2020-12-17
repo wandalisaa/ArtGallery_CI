@@ -25,14 +25,17 @@ class Search extends CI_Controller {
 		  );
 
 		  $keyword = $this->input->post('keyword');
-		  $data['media']=$this->m_obat->get_keyword('m_media',$keyword,'nama_media');
-		  $data['seniman']=$this->m_obat->get_keyword('m_seniman',$keyword,'nama_seniman');
-		  $data['galeri']=$this->m_obat->get_keyword('m_galeri',$keyword,'nama_galeri');
-		  $data['jenis']=$this->m_obat->get_keyword('m_jenis',$keyword,'nama_jenis');
-		  $data['art']=$this->m_obat->get_keyword('tr_art',$keyword,'judul_art');
-		  $data['artikel']=$this->m_obat->get_keyword('tr_artikel',$keyword,'judul');
+		  $title = array(
+			"title" => "Pencarian '".$keyword."'"
+		  );
+		  $data['media']=$this->m_item->get_search('m_media','id_media',$keyword,'nama_media');
+		  $data['seniman']=$this->m_item->get_search('m_seniman','id_seniman',$keyword,'nama_seniman');
+		  $data['galeri']=$this->m_item->get_search('m_galeri','id_galeri',$keyword,'nama_galeri');
+		  $data['jenis']=$this->m_item->get_search('m_jenis','id_jenis',$keyword,'nama_jenis');
+		  $data['art']=$this->m_item->get_search_art('tr_art','id_art',$keyword,'judul_art');
+		  $data['artikel']=$this->m_item->get_search_artikel('tr_artikel','id_artikel',$keyword,'judul');
 
-		$this->load->view('header', $data);
+		$this->load->view('header', $title);
 		$this->load->view('search',$data);
 		$this->load->view('footer');
 	}

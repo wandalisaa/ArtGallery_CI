@@ -24,7 +24,7 @@ class Galeri extends CI_Controller {
 			"title" => "Galeri"
 		  );
 
-		$data['galeri'] = $this->m_item->get_galeri($id);
+		$data['galeri'] = $this->m_item->get_detail('m_galeri','id_galeri',$id);
 		$data['artikel'] = $this->m_item->get_artikel_terkait('m_galeri','id_galeri',$id);
 		$data['art'] = $this->m_item->get_art_terkait('m_galeri','id_galeri',$id);
 		$data['other'] = $this->m_item->get_other('m_galeri','id_galeri',$id);
@@ -33,21 +33,59 @@ class Galeri extends CI_Controller {
 		$this->load->view('footer');
 	}
 	// ================================ GALERI =====================================
+	public function do_upload()
+	{
+		$url = "../images";
+		$image=basename($_FILES['logoGaleri']['name']);
+		$image=str_replace(' ','|',$image);
+		$type = explode(".",$image);
+		$type = $type[count($type)-1];
+		if (in_array($type,array('jpg','jpeg','png','gif')))
+		{
+			$tmppath="images/".uniqid(rand()).".".$type;
+			if(is_uploaded_file($_FILES["logoGaleri"]["tmp_name"]))
+			{
+				move_uploaded_file($_FILES['logoGaleri']['tmp_name'],$tmppath);
+				return $tmppath;
+			}
+		}
+	}
 	public function insert_galeri(){
 		$nama = $this->input->post('namaGaleri');
 		$deskripsi = $this->input->post('deskGaleri');
 		$kota = $this->input->post('kota');
 		$negara = $this->input->post('negara');
 
-		$foto = $this->do_upload();
+		// $foto = $this->do_upload();
 
-			$data = array(
-				"nama_galeri" => $nama,
-				"desk_galeri" => $deskripsi,
-				"kota" => $kota,
-				"negara" => $negara,
-				"foto" => $foto
-			);
+		// 	$data = array(
+		// 		"nama_galeri" => $nama,
+		// 		"desk_galeri" => $deskripsi,
+		// 		"kota" => $kota,
+		// 		"negara" => $negara,
+		// 		"foto" => $foto
+		// 	);
+		$data = array(
+			"nama_galeri" => $nama,
+			"desk_galeri" => $deskripsi,
+			"kota" => $kota,
+			"negara" => $negara
+		);
+
+		$config['upload_path']          = 'images/';
+		$config['allowed_types']        = 'jpg|jpeg|gif|png';
+		$config['file_name']						= $nama;
+
+		$this->load->library('upload', $config);
+		if ( ! $this->upload->do_upload('logoGaleri'))
+		{
+
+		}
+		else {
+		$data += array(
+			'foto' => $coanfig['upload_path'].$this->upload->data('file_name'),
+		);
+		}
 		
 			$this->m_item->input_data('m_galeri',$data);
 			redirect('admin/list_galeri/');
@@ -55,7 +93,7 @@ class Galeri extends CI_Controller {
 	}
 	public function update_galeri($id){
 
-		$data['galeri'] = $this->m_item->get_galeri($id);
+		$data['galeri'] = $this->m_item->get_detail('m_galeri','id_galeri',$id);
 		$title = array(
 			"title" => "Galeri"
 		  );
@@ -71,21 +109,42 @@ class Galeri extends CI_Controller {
 		$kota = $this->input->post('kota');
 		$negara = $this->input->post('negara');
 
-		$foto =  $this->do_upload();
+		// $foto =  $this->do_upload();
 
+		// $data = array(
+		// 	"nama_galeri" => $nama,
+		// 	"desk_galeri" => $deskripsi,
+		// 	"kota" => $kota,
+		// 	"negara" => $negara,
+		// );
+
+		// if (empty($foto)) {
+		// 	# code...
+		// } else {
+		// 	$data += array(
+		// 		"foto" => $foto
+		// 	);
+		// }
 		$data = array(
 			"nama_galeri" => $nama,
 			"desk_galeri" => $deskripsi,
 			"kota" => $kota,
-			"negara" => $negara,
+			"negara" => $negara
 		);
 
-		if (empty($foto)) {
-			# code...
-		} else {
-			$data += array(
-				"foto" => $foto
-			);
+		$config['upload_path']          = 'images/';
+		$config['allowed_types']        = 'jpg|jpeg|gif|png';
+		$config['file_name']						= $nama;
+
+		$this->load->library('upload', $config);
+		if ( ! $this->upload->do_upload('logoGaleri'))
+		{
+
+		}
+		else {
+		$data += array(
+			'foto' => $config['upload_path'].$this->upload->data('file_name'),
+		);
 		}
 		
 		$this->m_item->update_data('m_galeri','id_galeri',$id,$data);

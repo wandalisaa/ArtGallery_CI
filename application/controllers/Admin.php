@@ -31,20 +31,25 @@ class Admin extends CI_Controller {
 
 	public function artikel()
 	{
+		$data['media'] = $this->m_item->get_list('m_media');
+		$data['seniman'] = $this->m_item->get_list('m_seniman');
+		$data['jenis'] = $this->m_item->get_list('m_jenis');
+		$data['galeri'] = $this->m_item->get_list('m_galeri');
 		$title = array(
 			"title" => "Artikel"
 		  );
 		$this->load->view('header', $title);
-		$this->load->view('form-artikel');
+		$this->load->view('input-artikel',$data);
 		$this->load->view('footer');
 	}
-	public function art()
+	public function art($id)
 	{
 		$title = array(
-			"title" => "Karya Seni"
+			"title" => "Tambah Koleksi"
 		  );
+		  $data['artikel'] = $this->m_item->get_detail_artikel($id);
 		$this->load->view('header', $title);
-		$this->load->view('form-art');
+		$this->load->view('input-art',$data);
 		$this->load->view('footer');
 	}
 	public function galeri()
@@ -62,7 +67,7 @@ class Admin extends CI_Controller {
 			"title" => "Media"
 		  );
 		$this->load->view('header', $title);
-		$this->load->view('form-media');
+		$this->load->view('input-media');
 		$this->load->view('footer');
 	}
 	public function seniman()
@@ -71,7 +76,7 @@ class Admin extends CI_Controller {
 			"title" => "Seniman"
 		  );
 		$this->load->view('header', $title);
-		$this->load->view('form-seniman');
+		$this->load->view('input-seniman');
 		$this->load->view('footer');
 	}
 	public function jenis()
@@ -80,7 +85,7 @@ class Admin extends CI_Controller {
 			"title" => "Gerakan Seni"
 		  );
 		$this->load->view('header', $title);
-		$this->load->view('form-jenis');
+		$this->load->view('input-jenis');
 		$this->load->view('footer');
 	}
 
@@ -90,21 +95,13 @@ class Admin extends CI_Controller {
 		$title = array(
 			"title" => "Daftar Artikel"
 		  );
-		  $data['artikel'] = $this->m_item->get_all_artikel();
+		  
+		$data['artikel'] = $this->m_item->get_all_artikel();
 		$this->load->view('header', $title);
 		$this->load->view('list-artikel',$data);
 		$this->load->view('footer');
 	}
-	public function list_art()
-	{
-		$title = array(
-			"title" => "Daftar Karya Seni"
-		  );
-		$data['art'] = $this->m_item->get_all_art();
-		$this->load->view('header', $title);
-		$this->load->view('list-art',$data);
-		$this->load->view('footer');
-	}
+
 	public function list_galeri()
 	{
 		$title = array(
@@ -166,6 +163,7 @@ class Admin extends CI_Controller {
 			}
 		}
 	}
+	
 
 	
 }

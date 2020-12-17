@@ -24,9 +24,10 @@
 						<td><?=$data->nama_jenis?></td>
 						<td><?=$data->nama_media?></td>
 						<td>
-							<a href="" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="edit"><i class="fa fa-edit"></i></a>
-							<a href="" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="detail"><i class="fa fa-eye"></i></a>
-							<a href="" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="hapus"><i class="fa fa-trash"></i></a>
+							<a href="<?= base_url('artikel/update_artikel/'.$data->id_artikel) ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="edit"><i class="fa fa-edit"></i></a>
+							<a href="<?= base_url('artikel/index/'.$data->id_artikel) ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="detail"><i class="fa fa-eye"></i></a>
+							<a href="<?= base_url('artikel/delete_artikel/'.$data->id_artikel) ?>" onclick="return confirm('Apakah Anda Yakin ingin mengapus artikel <?=$data->judul?>?');" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="hapus"><i class="fa fa-trash"></i></a>
+							<a href="<?= base_url('art/koleksi_artikel/'.$data->id_artikel) ?>" class="btn btn-warning btn-sm text-white" data-toggle="tooltip" data-placement="bottom" title="lihat koleksi"><i class="fa fa-bars"></i></a>
 						</td>
 					  </tr>
 					<?php } ?>

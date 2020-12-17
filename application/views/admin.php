@@ -10,7 +10,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-lg-4 mb-4">
+					<div class="col-lg-8 mb-4">
 						<div class="card bg-primary text-white">
 						  <div class="card-body">
 							  <div class="row">
@@ -25,23 +25,6 @@
 								  </div>
 							  </div>
 						  </div>
-						</div>
-					  </div>
-					  <div class="col-lg-4 mb-4">
-						<div class="card bg-success text-white">
-							<div class="card-body">
-								<div class="row">
-									<div class="text-left w-50 pl-3">
-									<a href="<?= base_url("admin/list_art/") ?>">Karya Seni</a>
-										  <div class="text-white-50 small">Tambahkan Karya Seni</div>
-									</div>
-									<div class="text-right w-50 pr-3 plus-btn">
-										<a href="<?= base_url("admin/art/") ?>">
-											<i class="fa fa-plus fa-lg"></i>
-										</a>
-									</div>
-								</div>
-							</div>
 						</div>
 					  </div>
 					  <div class="col-lg-4 mb-4">
@@ -96,7 +79,7 @@
 						</div>
 					  </div>
 					  <div class="col-lg-4 mb-4">
-						<div class="card bg-secondary text-white">
+						<div class="card bg-success text-white">
 							<div class="card-body">
 								<div class="row">
 									<div class="text-left w-50 pl-3">

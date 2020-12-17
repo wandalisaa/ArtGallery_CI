@@ -3,56 +3,57 @@
     <div class="blog__single__page">
 		<article class="blog__article pt-3">
 			<blockquote class="shadow bg-white">
-				<form class="needs-validation" novalidate>
+			<?php foreach($art as $data): ?>
+				<form class="needs-validation" method="post" action="<?=base_url('art/do_update/'.$data->id_art)?>" enctype="multipart/form-data" novalidate>
+				<input type="number" name="id_artikel" value="<?=$data->id_artikel?>" hidden>
                     <div class="form-row">
                       <div class="col-md-12 mb-3">
                         <label for="namaKarya"><h4>Nama Karya</h4></label>
-                        <input type="text" class="form-control" id="namaKarya" placeholder="Karya" value="" required>
+                        <input type="text" class="form-control" id="namaKarya" name="judulKarya" placeholder="Karya" value="<?=$data->judul_art?>" required>
                         <div class="valid-feedback">
                           Bagus !
                         </div>
                       </div>
                       <div class="col-md-12 mb-3">
                         <label for="deskKarya"><h4>Deskripsi</h4></label>
-                        <input type="text" class="form-control" id="deskKarya" placeholder="Deskripsi" value="" required style="height: 100px;">
+                        <input type="text" class="form-control" id="deskKarya" name="deskKarya" placeholder="Deskripsi" value="<?=$data->desk_art?>" required style="height: 100px;">
                         <div class="valid-feedback">
                           Bagus !
                         </div>
 					  </div>
 					  <div class="col-md-6 mb-3">
-                        <label for="thnKarya"><h4>Tahun Dibuat</h4></label>
-                        <input type="date" class="form-control" id="thnKarya" placeholder="Tahun Dibuat" value="" required>
+                        <label for="yearpicker"><h4>Tahun Dibuat</h4></label>
+                        <input type="number" class="form-control" id="yearpicker" name="tahunDibuat" placeholder="Tahun Dibuat" value="<?=$data->tahun_dibuat?>" required>
                         <div class="valid-feedback">
                           Bagus !
                         </div>
 					  </div>
 					  <div class="col-md-6 mb-3">
                         <label for="lokasiKarya"><h4>Lokasi</h4></label>
-                        <input type="text" class="form-control" id="lokasiKarya" placeholder="Lokasi Pembuatan" value="" required>
+                        <input type="text" class="form-control" id="lokasiKarya" name="lokasiKarya" placeholder="Lokasi Pembuatan" value="<?=$data->tempat_dibuat?>" required>
                         <div class="valid-feedback">
                           Bagus !
                         </div>
                       </div>
-					  <div class="col-md-6 mb-3">
-						<div class="form-group">
-							<label for="artikel"><h4>Artikel</h4></label>
-							<select id="artikel" class="custom-select" required>
-							  <option value="">Pilih artikel</option>
-							  <option value="1">Judul artikel , nama seniman - nama galeri</option>
-							  <option value="2">Judul artikel , nama seniman - nama galeri</option>
-							  <option value="3">Judul artikel , nama seniman - nama galeri</option>
-							</select>
-							<div class="invalid-feedback">Example invalid custom select feedback</div>
+											<div class="col-md-12 mb-3">
+                        <label for="namaKarya"><h4>Dimensi Karya</h4></label>
+                        <input type="text" class="form-control" id="namaKarya" name="dimensiKarya" placeholder="Karya" value="<?=$data->dimensi?>" required>
+                        <div class="valid-feedback">
+                          Bagus !
+                        </div>
+                      </div>
+											<div class="col-md-6 mb-3">
+							<img class="img-thumbnail w-25" src='<?= base_url().$data->gambar ?>' >
 						</div>
-					  </div>
-					  <div class="col-md-12 mb-3">
+					  <div class="col-md-6 mb-3">
 						<div class="custom-file">
-							<input type="file" class="custom-file-input" id="logoGaleri" required>
-							<label class="custom-file-label" for="logoGaleri">Input Karya Seni</label>
+							<input type="file" class="custom-file-input" id="gambar" name="gambar">
+							<label class="custom-file-label" for="gambar">Input Karya Seni</label>
 						  </div>
 					  </div>
                     <button class="btn btn-success ml-auto" type="submit">Simpan</button>
                   </form>
+								<?php endforeach ?>
             </blockquote>
         </article>
     </div>

@@ -18,9 +18,9 @@
 						<td><?=$data->nama_seniman?></td>
 						<td><?=$data->tanggal_lahir?></td>
 						<td>
-							<a href="" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="edit"><i class="fa fa-edit"></i></a>
-							<a href="" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="detail"><i class="fa fa-eye"></i></a>
-							<a href="" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="hapus"><i class="fa fa-trash"></i></a>
+							<a href="<?= base_url('seniman/update_seniman/'.$data->id_seniman) ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="edit"><i class="fa fa-edit"></i></a>
+							<a href="<?= base_url('seniman/index/'.$data->id_seniman) ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="detail"><i class="fa fa-eye"></i></a>
+							<a href="<?= base_url('seniman/delete_seniman/'.$data->id_seniman) ?>" onclick="return confirm('Apakah Anda Yakin ingin mengapus seniman <?=$data->nama_seniman?>?');" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="hapus"><i class="fa fa-trash"></i></a>
 						</td>
 					  </tr>
 					  <?php } ?>

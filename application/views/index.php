@@ -22,7 +22,7 @@
 			<?php foreach( $jenis as $data ){?>
 			<div class="slide-item text-center">
 				<a href="<?= base_url('Jenis/index/'.$data->id_jenis) ?>">
-                    <img src="<?= $data->gambar ?>" alt="">
+                    <img src="<?= base_url().$data->gambar ?>" alt="">
                 </a>
                 <a href="<?= base_url('Jenis/index/'.$data->id_jenis) ?>">
                     <h2><?= $data->nama_jenis?></h2>
@@ -124,17 +124,17 @@
 			<div class="hero-text-slider"></div>
 		</section> -->
 		<div class="row mb-5 justify-content-center button-list">
-			<button class="btn btn-default mx-2">
+			<a href="" onclick="" class="btn btn-default mx-2">
 				Urutkan Berdasarkan Abjad
-			</button>
-			<button class="btn btn-default mx-2">
+			</a>
+			<a href="" onclick="abjad()" class="btn btn-default mx-2">
 				Urutkan Berdasarkan Waktu
-			</button>
+			</a>
 		</div>
         <div class="row">
 		<?php foreach($semuajenis as $data){ ?>
             <div class="col-md-3">
-                <div class="blog__item set-bg" data-setbg="<?= $data->gambar ?>">
+                <div class="blog__item set-bg" data-setbg="<?= base_url().$data->gambar ?>">
                     <div class="blog__content">
                         <div class="blog__date"><?= $data->total?> item</div>
                         <h3><a href=" <?= base_url('Jenis/index/'.$data->id_jenis) ?>"><?= $data->nama_jenis?></a></h3>

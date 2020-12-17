@@ -20,11 +20,14 @@ class Favorit extends CI_Controller {
 	 */
 	public function index()
 	{
-		$data = array(
+		$id_user = $this->session->userdata('id_user');
+		$title = array(
 			"title" => "Favorit"
 		  );
-		$this->load->view('header', $data);
-		$this->load->view('favorit');
+		$data['art'] = $this->m_item->favorit($id_user);
+		
+		$this->load->view('header', $title);
+		$this->load->view('favorit',$data);
 		$this->load->view('footer');
 	}
 }

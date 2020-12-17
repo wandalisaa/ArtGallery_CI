@@ -26,7 +26,7 @@
 				<?php foreach($artikel as $data){?>
 					<div class="blog__slider__item p-3">
 						<a href="<?= base_url("Artikel/index/".$data->id_artikel) ?>">
-							<div class="blog__item  set-bg" data-setbg="<?= $data->gambar ?>">
+							<div class="blog__item  set-bg" data-setbg="<?= base_url().$data->gambar ?>">
 								<div class="blog__content text-white">
 								</div>
 							</div>
@@ -43,7 +43,7 @@
 			<div class="blog__slider pt-2">
 			<?php foreach($art as $data){?>
 				<div class="blog__slider__item">
-					<a href="<?= base_url("Art/index/".$data->id_art) ?>"><img src="<?= $data->gambar ?>" alt="" title="<?= $data->judul_art ?>"></a>
+					<a href="<?= base_url("Art/index/".$data->id_art) ?>"><img src="<?= base_url().$data->gambar ?>" alt="" title="<?= $data->judul_art ?>"></a>
 				</div>
 			<?php } ?>
 			</div>
@@ -58,7 +58,7 @@
 				<?php foreach($other as $data){?>
 					<div class="col-md-3">
 						<a href="<?= base_url("jenis/index/".$data->id_jenis) ?>">
-							<div class="blog__item set-bg" data-setbg="<?= $data->gambar ?>">
+							<div class="blog__item set-bg" data-setbg="<?= base_url().$data->gambar ?>">
 								<div class="blog__content text-white">
 									<h4><?= $data->nama_jenis ?></h4>
 								</div>

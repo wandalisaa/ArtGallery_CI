@@ -5,65 +5,16 @@ class M_item extends CI_Model{
 	// =============================================== SELECT =======================================================
 	//mengambil nama-nama gerakan jenis dan jumlah karya seni terkait
 	public function get_list_jenis() {
-		return $this->db->query("SELECT COUNT(c.id_art) as total ,a.nama_jenis ,a.id_jenis, c.gambar FROM m_jenis as a INNER JOIN tr_artikel as b ON a.id_jenis = b.id_jenis INNER JOIN tr_art as c ON c.id_artikel=b.id_artikel GROUP BY a.id_jenis LIMIT 7")->result();
+		return $this->db->query("SELECT COUNT(c.id_art) as total ,a.nama_jenis ,a.id_jenis, c.gambar FROM m_jenis as a INNER JOIN tr_artikel as b ON a.id_jenis = b.id_jenis INNER JOIN tr_art as c ON c.id_artikel=b.id_artikel GROUP BY a.id_jenis ORDER BY a.id_jenis DESC LIMIT 7 ")->result();
+	}
+	public function get_list_abjad() {
+		return $this->db->query("SELECT COUNT(c.id_art) as total ,a.nama_jenis ,a.id_jenis, c.gambar FROM m_jenis as a INNER JOIN tr_artikel as b ON a.id_jenis = b.id_jenis INNER JOIN tr_art as c ON c.id_artikel=b.id_artikel GROUP BY a.id_jenis ORDER BY a.nama_jenis ASC LIMIT 7 ")->result();
+	}
+	public function get_list_waktu() {
+		return $this->db->query("SELECT COUNT(c.id_art) as total ,a.nama_jenis ,a.id_jenis, c.gambar FROM m_jenis as a INNER JOIN tr_artikel as b ON a.id_jenis = b.id_jenis INNER JOIN tr_art as c ON c.id_artikel=b.id_artikel GROUP BY a.id_jenis ORDER BY a.tahun_awal ASC LIMIT 7 ")->result();
 	}
 	public function get_all_jenis() {
 		return $this->db->query("SELECT COUNT(c.id_art) as total ,a.nama_jenis ,a.id_jenis, c.gambar FROM m_jenis as a INNER JOIN tr_artikel as b ON a.id_jenis = b.id_jenis INNER JOIN tr_art as c ON c.id_artikel=b.id_artikel GROUP BY a.id_jenis")->result();
-	}
-	// GERAKAN SENI
-	//  detail jenis
-	public function get_jenis($id) {
-		return $this->db->query("SELECT * FROM m_jenis WHERE id_jenis = $id")->result();
-	}
-	// artikel gerakan seni
-	public function get_artikel_jenis($id) {
-		return $this->db->query("SELECT a.id_artikel,a.judul,b.id_galeri,b.nama_galeri,c.gambar FROM tr_artikel AS a LEFT JOIN m_jenis AS t ON a.id_jenis = t.id_jenis JOIN m_galeri AS b ON a.id_galeri=b.id_galeri JOIN tr_art AS c ON a.id_artikel=c.id_artikel WHERE a.id_jenis = $id GROUP BY a.id_artikel")->result();
-	}
-	// karya seni gerakan seni
-	public function get_art_jenis($id) {
-		return $this->db->query("SELECT c.id_art,c.judul_art,c.gambar FROM m_jenis AS a INNER JOIN tr_artikel AS b ON a.id_jenis=b.id_jenis RIGHT JOIN tr_art AS c ON b.id_artikel=c.id_artikel WHERE a.id_jenis = $id")->result();
-	}
-	
-	// SENIMAN
-	// detail seniman
-	public function get_seniman($id) {
-		return $this->db->query("SELECT * FROM m_seniman WHERE id_seniman = $id")->result();
-	}
-	// artikel seniman
-	public function get_artikel_seniman($id) {
-		return $this->db->query("SELECT a.id_artikel,a.judul,b.id_galeri,b.nama_galeri,c.gambar FROM tr_artikel AS a LEFT JOIN m_seniman AS t ON a.id_seniman = t.id_seniman JOIN m_galeri AS b ON a.id_galeri=b.id_galeri JOIN tr_art AS c ON a.id_artikel=c.id_artikel WHERE a.id_seniman = $id GROUP BY a.id_artikel")->result();
-	}
-	// karya seni seniman
-	public function get_art_seniman($id) {
-		return $this->db->query("SELECT c.id_art,c.judul_art,c.gambar FROM m_seniman AS a INNER JOIN tr_artikel AS b ON a.id_seniman=b.id_seniman RIGHT JOIN tr_art AS c ON b.id_artikel=c.id_artikel WHERE a.id_seniman = $id")->result();
-	}
-
-	// MEDIA
-	// detail media
-	public function get_media($id) {
-		return $this->db->query("SELECT * FROM m_media WHERE id_media = $id")->result();
-	}
-	// artikel media
-	public function get_artikel_media($id) {
-		return $this->db->query("SELECT a.id_artikel,a.judul,b.id_galeri,b.nama_galeri,c.gambar FROM tr_artikel AS a LEFT JOIN m_media AS t ON a.id_media = t.id_media JOIN m_galeri AS b ON a.id_galeri=b.id_galeri JOIN tr_art AS c ON a.id_artikel=c.id_artikel WHERE a.id_media = $id GROUP BY a.id_artikel")->result();
-	}
-	// karya seni media
-	public function get_art_media($id) {
-		return $this->db->query("SELECT c.id_art,c.judul_art,c.gambar FROM m_media AS a INNER JOIN tr_artikel AS b ON a.id_media=b.id_media RIGHT JOIN tr_art AS c ON b.id_artikel=c.id_artikel WHERE a.id_media = $id")->result();
-	}
-
-	// GALERI
-	// detail galeri
-	public function get_galeri($id) {
-		return $this->db->query("SELECT * FROM m_galeri WHERE id_galeri = $id")->result();
-	}
-	// artikel galeri
-	public function get_artikel_galeri($id) {
-		return $this->db->query("SELECT a.id_artikel,a.judul,b.id_galeri,b.nama_galeri,c.gambar FROM tr_artikel AS a LEFT JOIN m_galeri AS t ON a.id_galeri = t.id_galeri JOIN m_galeri AS b ON a.id_galeri=b.id_galeri JOIN tr_art AS c ON a.id_artikel=c.id_artikel WHERE a.id_galeri = $id GROUP BY a.id_artikel")->result();
-	}
-	// karya seni galeri
-	public function get_art_galeri($id) {
-		return $this->db->query("SELECT c.id_art,c.judul_art,c.gambar FROM m_galeri AS a INNER JOIN tr_artikel AS b ON a.id_galeri=b.id_galeri RIGHT JOIN tr_art AS c ON b.id_artikel=c.id_artikel WHERE a.id_galeri = $id")->result();
 	}
 
 	// ARTIKEL
@@ -83,6 +34,7 @@ class M_item extends CI_Model{
 	public function get_list_art($id) {
 		return $this->db->query("SELECT b.id_art,b.judul_art,b.gambar FROM tr_artikel AS a RIGHT JOIN tr_art AS b ON a.id_artikel=b.id_artikel WHERE b.id_art != $id ORDER BY b.id_art DESC LIMIT 5")->result();
 	}
+
 // ===================================== artikel terkait =====================================
 public function get_artikel_terkait($table,$kolom,$id) {
 	return $this->db->query("SELECT a.id_artikel,a.judul,b.id_galeri,b.nama_galeri,c.gambar FROM tr_artikel AS a LEFT JOIN $table AS t ON a.$kolom = t.$kolom JOIN m_galeri AS b ON a.id_galeri=b.id_galeri JOIN tr_art AS c ON a.id_artikel=c.id_artikel WHERE a.$kolom = $id GROUP BY a.id_artikel")->result();
@@ -118,37 +70,47 @@ public function get_other($table,$kolom,$id) {
 
 	// ================================ FAV ===============================
 	public function input_favorit($data) {
-		return $this->db->insert('fav',$data);
+		return $this->db->insert('tr_fav',$data);
 	}
-	public function delete_favorit($id) {
-		$this->db->where('id_fav',$id);
-		return $this->db->delete('fav');
+	public function delete_favorit($id,$id_user) {
+		$this->db->where('id_art',$id);
+		$this->db->where('id_user',$id_user);
+		return $this->db->delete('tr_fav');
+	}
+	public function favorit($id_user){
+		return $this->db->query("SELECT b.judul_art,b.id_art,b.gambar FROM `tr_fav` AS a JOIN tr_art as b ON a.id_art = b.id_art WHERE a.id_user = $id_user ORDER BY a.id_fav DESC")->result();
 	}
 	// ============================== Search ==========================
-	public function get_keyword($table,$keyword,$kolom){
-		$this->db->select('*');
-		$this->db->from($table);
-		$this->db->like($kolom,$keyword);
-
-		return $this->db->get()->result_array();
+	public function get_search($table,$kolom_id,$keyword,$kolom) {
+	return $this->db->query("SELECT * FROM $table AS a LEFT JOIN tr_artikel AS b ON a.$kolom_id = b.$kolom_id RIGHT JOIN tr_art AS c ON b.id_artikel = c.id_artikel WHERE a.$kolom LIKE '%$keyword%' GROUP BY a.$kolom_id ORDER BY a.$kolom_id DESC ")->result();
+	}
+	public function get_search_art($table,$kolom_id,$keyword,$kolom) {
+		return $this->db->query("SELECT * FROM $table AS a WHERE a.$kolom LIKE '%$keyword%' GROUP BY a.$kolom_id ORDER BY a.$kolom_id DESC ")->result();
+	}
+	public function get_search_artikel($table,$kolom_id,$keyword,$kolom) {
+		return $this->db->query("SELECT * FROM tr_art AS a LEFT JOIN tr_artikel AS b ON a.$kolom_id = b.$kolom_id  WHERE b.$kolom LIKE '%$keyword%' GROUP BY b.$kolom_id ORDER BY b.$kolom_id DESC ")->result();
 	}
 	// =============================== List ===========================
 	public function get_list($table){
-		return $this->db->query("SELECT * from $table")->result();
+		return $this->db->query("SELECT * from $tsable")->result();
 	}
 	// detail
 	public function get_detail($table,$kolom,$id){
-		$this->db->select('*');
-		$this->db->from($table);
-		$this->db->where($kolom,$id);
-
-		return $this->db->get()->result_array();
+		return $this->db->query("SELECT * FROM $table WHERE $kolom = $id")->result();
+	}
+	public function get_detail_artikel($id) {
+		return $this->db->query("SELECT a.id_artikel,a.judul,a.deskripsi,b.nama_seniman,b.id_seniman,c.nama_galeri,c.id_galeri,d.nama_media,d.id_media,e.nama_jenis,e.id_jenis FROM tr_artikel as a LEFT JOIN m_seniman AS b ON a.id_seniman=b.id_seniman JOIN m_galeri AS c ON a.id_galeri=c.id_galeri JOIN m_media AS d ON a.id_media=d.id_media JOIN m_jenis AS e ON a.id_jenis=e.id_jenis WHERE a.id_artikel = $id ")->result();
 	}
 	public function get_all_artikel() {
 		return $this->db->query("SELECT a.id_artikel,a.judul,a.deskripsi,b.nama_seniman,c.nama_galeri,d.nama_media,e.nama_jenis FROM tr_artikel as a LEFT JOIN m_seniman AS b ON a.id_seniman=b.id_seniman JOIN m_galeri AS c ON a.id_galeri=c.id_galeri JOIN m_media AS d ON a.id_media=d.id_media JOIN m_jenis AS e ON a.id_jenis=e.id_jenis ")->result();
 	}
-	public function get_all_art() {
-		return $this->db->query("SELECT * FROM tr_artikel AS a RIGHT JOIN tr_art AS b ON a.id_artikel=b.id_artikel")->result();
+
+	public function get_all_art($id) {
+		return $this->db->query("SELECT * FROM tr_artikel AS a RIGHT JOIN tr_art AS b ON a.id_artikel=b.id_artikel WHERE a.id_artikel = $id")->result();
+	}
+	// like
+	public function check_like($id_art,$id_user){
+		return $this->db->query("SELECT EXISTS(SELECT * from tr_fav WHERE id_user = $id_user AND id_art = $id_art) as a")->result();
 	}
 }
 ?>
