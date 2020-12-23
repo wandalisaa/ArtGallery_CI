@@ -60,7 +60,11 @@ class Auth extends CI_Controller {
 			}
 			$this->session->set_userdata($dataUser);
 			$this->session->set_flashdata('success', 'Anda Berhasil Login ...');
-		  	redirect(base_url());
+			if($this->session->userdata('level','1')){
+				redirect('admin/index/');
+			}else {
+				redirect('home/index/');
+			}
 		} else {
 			$this->session->set_flashdata('danger', 'Anda gagal Login ...');
 			redirect(base_url());

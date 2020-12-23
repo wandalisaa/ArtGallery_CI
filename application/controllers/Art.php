@@ -20,17 +20,18 @@ class Art extends CI_Controller {
 	 */
 	public function index($id)
 	{
-		if(isset($this->session->userdata)){
+		
+		if($this->session->userdata('username') == TRUE ){
 			$id_user = $this->session->userdata('id_user');
+			$data['like'] = $this->m_item->check_like($id,$id_user);
 		}else{
-			$id_user = 1234;
+			$data['like'] = $this->m_item->check_like($id,'0');
 		}
 		$title = array(
 			"title" => "Karya Seni"
 		  );
 		$data['art'] = $this->m_item->get_art($id);
 		$data['other'] = $this->m_item->get_list_art($id);
-		$data['like'] = $this->m_item->check_like($id,$id_user);
 
 		$this->load->view('header', $title);
 		$this->load->view('art',$data);

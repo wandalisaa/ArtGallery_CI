@@ -4,7 +4,7 @@
 		<article class="blog__article pt-5">
 		<?php foreach($art as $data){ ?>
 			<blockquote class="shadow bg-white">
-		<?php if($this->session->userdata('level') == 0): ?>
+		<?php if( $this->session->userdata('username') == TRUE): ?>
 			<?php foreach($like as $suka){ ?>
 				<div class="text-right float-right">
 				<?php if( $suka->a == TRUE ){ ?>

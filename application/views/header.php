@@ -61,10 +61,10 @@
 						<li><a href="<?= base_url("auth/index/") ?>">Login</a></li>
 					<?php } else  if($this->session->userdata('username') == TRUE){?>
 					<li><a href="<?= base_url("auth/logout/") ?>">Logout</a></li>
+					<li><a href="<?= base_url("favorit/index/") ?>">Favorit</a></li>
 					<?php if($this->session->userdata('level', '1' )){?>
 					<li><a href="<?= base_url("admin/index/") ?>">Admin</a></li>
 					<?php } else { ?>
-						<li><a href="<?= base_url("favorit/index/") ?>">Favorit</a></li>
 						<li><a href="<?= base_url('auth/profil/')?>">Profil</a></li>
 					<?php } }?>
 					<!-- <li><a href="./blog.html">Blog</a>
