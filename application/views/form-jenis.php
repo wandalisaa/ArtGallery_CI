@@ -27,6 +27,13 @@
                           Bagus !
                         </div>
 					  			</div>
+									<div class="col-md-6 mb-3">
+                        <label for="thnAwal"><h4>Sampai</h4></label>
+                        <input type="number" class="form-control" name="tahunAkhir" placeholder="tahun akhir ( optional )" value="<?=$data->tahun_akhir?>" >
+                        <div class="valid-feedback">
+                          Bagus !
+                        </div>
+					  			</div>
 									<div class="col-12">
 									<button class="btn btn-success ml-auto" type="submit">Simpan</button>
 									</div>

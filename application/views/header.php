@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/slicknav.min.css"/>
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/fresco.css"/>
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/slick.css"/>
-
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<!-- Main Stylesheets -->
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css"/>
     <!-- icon -->

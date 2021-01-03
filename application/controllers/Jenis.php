@@ -36,12 +36,14 @@ class Jenis extends CI_Controller {
 		public function insert_jenis(){
 			$nama = $this->input->post('namaJenis');
 			$deskripsi = $this->input->post('deskJenis');
-			$tahun = $this->input->post('tahunAwal');
+			$tahunawl = $this->input->post('tahunAwal');
+			$tahunakr = $this->input->post('tahunAkhir');
 	
 			$data = array(
 				"nama_jenis" => $nama,
 				"desk_jenis" => $deskripsi,
-				"tahun_awal" => $tahun
+				"tahun_awal" => $tahunawl,
+				"tahun_akhir" => $tahunakr
 			);
 	
 			
@@ -64,12 +66,14 @@ class Jenis extends CI_Controller {
 			
 			$nama = $this->input->post('namaJenis');
 			$deskripsi = $this->input->post('deskJenis');
-			$tahun = $this->input->post('tahunAwal');
+			$tahunawl = $this->input->post('tahunAwal');
+			$tahunakr = $this->input->post('tahunAkhir');
 	
 			$data = array(
 				"nama_jenis" => $nama,
 				"desk_jenis" => $deskripsi,
-				"tahun_awal" => $tahun
+				"tahun_awal" => $tahunawl,
+				"tahun_akhir" => $tahunakr
 			);
 			
 			$this->m_item->update_data('m_jenis','id_jenis',$id,$data);

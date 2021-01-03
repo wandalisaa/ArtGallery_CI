@@ -257,8 +257,9 @@ $('.message a').click(function(){
  });
 
 // like button
-document.querySelector('.like-button').addEventListener('click', (e) => {
-	e.currentTarget.classList.toggle('liked');
-	
-  });
+window.onload = function(){
+var c = document.querySelector('.like-button');
+c.addEventListener("click", (e) => {
+	e.currentTarget.classList.toggle('liked'););
+}
 

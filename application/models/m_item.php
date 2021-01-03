@@ -5,16 +5,16 @@ class M_item extends CI_Model{
 	// =============================================== SELECT =======================================================
 	//mengambil nama-nama gerakan jenis dan jumlah karya seni terkait
 	public function get_list_jenis() {
-		return $this->db->query("SELECT COUNT(c.id_art) as total ,a.nama_jenis ,a.id_jenis, c.gambar FROM m_jenis as a INNER JOIN tr_artikel as b ON a.id_jenis = b.id_jenis INNER JOIN tr_art as c ON c.id_artikel=b.id_artikel GROUP BY a.id_jenis ORDER BY a.id_jenis DESC LIMIT 7 ")->result();
+		return $this->db->query("SELECT COUNT(c.id_art) as total,a.tahun_awal ,a.nama_jenis ,a.id_jenis, c.gambar FROM m_jenis as a INNER JOIN tr_artikel as b ON a.id_jenis = b.id_jenis INNER JOIN tr_art as c ON c.id_artikel=b.id_artikel GROUP BY a.id_jenis ORDER BY a.id_jenis DESC LIMIT 7 ")->result();
 	}
 	public function get_list_abjad() {
-		return $this->db->query("SELECT COUNT(c.id_art) as total ,a.nama_jenis ,a.id_jenis, c.gambar FROM m_jenis as a INNER JOIN tr_artikel as b ON a.id_jenis = b.id_jenis INNER JOIN tr_art as c ON c.id_artikel=b.id_artikel GROUP BY a.id_jenis ORDER BY a.nama_jenis ASC LIMIT 7 ")->result();
+		return $this->db->query("SELECT COUNT(c.id_art) as total,a.tahun_awal ,a.nama_jenis ,a.id_jenis, c.gambar FROM m_jenis as a INNER JOIN tr_artikel as b ON a.id_jenis = b.id_jenis INNER JOIN tr_art as c ON c.id_artikel=b.id_artikel GROUP BY a.id_jenis ORDER BY a.nama_jenis ASC LIMIT 7 ")->result();
 	}
 	public function get_list_waktu() {
-		return $this->db->query("SELECT COUNT(c.id_art) as total ,a.nama_jenis ,a.id_jenis, c.gambar FROM m_jenis as a INNER JOIN tr_artikel as b ON a.id_jenis = b.id_jenis INNER JOIN tr_art as c ON c.id_artikel=b.id_artikel GROUP BY a.id_jenis ORDER BY a.tahun_awal ASC LIMIT 7 ")->result();
+		return $this->db->query("SELECT COUNT(c.id_art) as total,a.tahun_awal ,a.nama_jenis ,a.id_jenis, c.gambar FROM m_jenis as a INNER JOIN tr_artikel as b ON a.id_jenis = b.id_jenis INNER JOIN tr_art as c ON c.id_artikel=b.id_artikel GROUP BY a.id_jenis ORDER BY a.tahun_awal ASC LIMIT 7 ")->result();
 	}
 	public function get_all_jenis() {
-		return $this->db->query("SELECT COUNT(c.id_art) as total ,a.nama_jenis ,a.id_jenis, c.gambar FROM m_jenis as a INNER JOIN tr_artikel as b ON a.id_jenis = b.id_jenis INNER JOIN tr_art as c ON c.id_artikel=b.id_artikel GROUP BY a.id_jenis")->result();
+		return $this->db->query("SELECT COUNT(c.id_art) as total,a.tahun_awal ,a.nama_jenis ,a.id_jenis, c.gambar FROM m_jenis as a INNER JOIN tr_artikel as b ON a.id_jenis = b.id_jenis INNER JOIN tr_art as c ON c.id_artikel=b.id_artikel GROUP BY a.id_jenis")->result();
 	}
 
 	// ARTIKEL
@@ -92,7 +92,7 @@ public function get_other($table,$kolom,$id) {
 	}
 	// =============================== List ===========================
 	public function get_list($table){
-		return $this->db->query("SELECT * from $tsable")->result();
+		return $this->db->query("SELECT * from $table")->result();
 	}
 	// detail
 	public function get_detail($table,$kolom,$id){
@@ -112,5 +112,7 @@ public function get_other($table,$kolom,$id) {
 	public function check_like($id_art,$id_user){
 		return $this->db->query("SELECT EXISTS(SELECT * from tr_fav WHERE id_user = $id_user AND id_art = $id_art) as a")->result();
 	}
+	// fetch
+
 }
 ?>

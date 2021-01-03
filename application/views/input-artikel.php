@@ -28,7 +28,7 @@
 							  <option value="<?=$data->id_jenis?>"><?=$data->nama_jenis?></option>
 							<?php endforeach ?>
 							</select>
-							<div class="invalid-feedback">Example invalid custom select feedback</div>
+							<div class="invalid-feedback">Form ini harus diisi</div>
 						</div>
 					  </div>
 					  <div class="col-md-6 mb-3">
@@ -40,7 +40,7 @@
 							  <option value="<?=$data->id_media?>"><?=$data->nama_media?></option>
 							<?php endforeach ?>
 							</select>
-							<div class="invalid-feedback">Example invalid custom select feedback</div>
+							<div class="invalid-feedback">Form ini harus diisi</div>
 						</div>
 					  </div>
 					  <div class="col-md-6 mb-3">
@@ -52,7 +52,7 @@
 							  <option value="<?=$data->id_seniman?>"><?=$data->nama_seniman?></option>
 							<?php endforeach ?>
 							</select>
-							<div class="invalid-feedback">Example invalid custom select feedback</div>
+							<div class="invalid-feedback">Form ini harus diisi</div>
 						</div>
 					  </div>
 					  <div class="col-md-6 mb-3">
@@ -64,7 +64,7 @@
 							  <option value="<?=$data->id_galeri?>"><?=$data->nama_galeri?></option>
 							<?php endforeach ?>
 							</select>
-							<div class="invalid-feedback">Example invalid custom select feedback</div>
+							<div class="invalid-feedback">Form ini harus diisi</div>
 						</div>
 					  </div>
                     <button class="btn btn-success ml-auto" type="submit">Simpan</button>

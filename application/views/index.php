@@ -124,25 +124,35 @@
 			<div class="hero-text-slider"></div>
 		</section> -->
 		<div class="row mb-5 justify-content-center button-list">
-			<a href="" onclick="" class="btn btn-default mx-2">
+
+				<a href="<?= base_url('home/abjad') ?>" type="submit" onclick="" class="btn
+				<?php if($active == 'abjad'){ ?> btn-success <?php } else { ?> btn-default <?php } ?> mx-2">
 				Urutkan Berdasarkan Abjad
-			</a>
-			<a href="" onclick="abjad()" class="btn btn-default mx-2">
+			   </a>
+				<a href="<?= base_url('home/waktu') ?>" type="submit" onclick="" class="btn 
+				<?php if($active == 'waktu'){ ?> btn-success <?php } else { ?> btn-default <?php } ?> mx-2">
 				Urutkan Berdasarkan Waktu
-			</a>
+			   </a>
 		</div>
-        <div class="row">
+        <div class="row" id="result">
+
 		<?php foreach($semuajenis as $data){ ?>
             <div class="col-md-3">
                 <div class="blog__item set-bg" data-setbg="<?= base_url().$data->gambar ?>">
                     <div class="blog__content">
                         <div class="blog__date"><?= $data->total?> item</div>
                         <h3><a href=" <?= base_url('Jenis/index/'.$data->id_jenis) ?>"><?= $data->nama_jenis?></a></h3>
+						<div class="blog__date"><?= $data->tahun_awal?></div>
                     </div>
                 </div>
             </div>
 		<?php } ?>
         </div>
     </div>
-    <!-- waktu -->
+	<!-- waktu -->
+	<script type="text/javascript">
+<?php if ($active != 'none'): ?>
+	$('html, body').animate({scrollTop:$('#result').position().top}, 'slow');
+<?php endif ?>
+	</script>
 

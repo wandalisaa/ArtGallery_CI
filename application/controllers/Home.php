@@ -22,8 +22,11 @@ class Home extends CI_Controller {
 	{
 		$title = array(
 			"page" => "Home",
-			"title" => "Gerakan Seni"
+			"title" => "Gerakan Seni",
+			"active" => "none"
 		  );
+		
+		
 		$data['jenis'] = $this->m_item->get_list_jenis();
 		$data['semuajenis'] = $this->m_item->get_all_jenis();
 		
@@ -31,7 +34,36 @@ class Home extends CI_Controller {
 		$this->load->view('index', $data);
 		$this->load->view('footer');
 	}
-	public function abjad(){
-		$data['semuajenis'] = $this->m_item->get_all_abjad();
+	public function abjad()
+	{
+		$title = array(
+			"page" => "Home",
+			"title" => "Gerakan Seni",
+			"active" => "abjad"
+		  );
+		
+		
+		$data['jenis'] = $this->m_item->get_list_jenis();
+		$data['semuajenis'] = $this->m_item->get_list_abjad();
+		
+		$this->load->view('header', $title);
+		$this->load->view('index', $data, '#result');
+		$this->load->view('footer');
+	}
+	public function waktu()
+	{
+		$title = array(
+			"page" => "Home",
+			"title" => "Gerakan Seni",
+			"active" => "waktu"
+		  );
+		
+		
+		$data['jenis'] = $this->m_item->get_list_waktu();
+		$data['semuajenis'] = $this->m_item->get_list_jenis();
+		
+		$this->load->view('header', $title);
+		$this->load->view('index', $data);
+		$this->load->view('footer');
 	}
 }
