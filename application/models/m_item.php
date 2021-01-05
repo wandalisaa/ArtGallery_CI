@@ -37,15 +37,15 @@ class M_item extends CI_Model{
 
 // ===================================== artikel terkait =====================================
 public function get_artikel_terkait($table,$kolom,$id) {
-	return $this->db->query("SELECT a.id_artikel,a.judul,b.id_galeri,b.nama_galeri,c.gambar FROM tr_artikel AS a JOIN $table AS t ON a.$kolom = t.$kolom RIGHT JOIN m_galeri AS b ON a.id_galeri=b.id_galeri RIGHT JOIN tr_art AS c ON a.id_artikel=c.id_artikel WHERE a.$kolom = $id GROUP BY a.id_artikel")->result();
+	return $this->db->query("SELECT a.id_artikel,a.judul,b.id_galeri,b.nama_galeri,c.gambar FROM tr_artikel AS a INNER JOIN $table AS t ON a.$kolom = t.$kolom INNER JOIN m_galeri AS b ON a.id_galeri=b.id_galeri INNER JOIN tr_art AS c ON a.id_artikel=c.id_artikel WHERE a.$kolom = $id GROUP BY a.id_artikel")->result();
 }
 // ===================================== karya seni terkait =====================================
 public function get_art_terkait($table,$kolom,$id) {
-	return $this->db->query("SELECT c.id_art,c.judul_art,c.gambar FROM $table AS a INNER JOIN tr_artikel AS b ON a.$kolom=b.$kolom RIGHT JOIN tr_art AS c ON b.id_artikel=c.id_artikel WHERE a.$kolom = $id")->result();
+	return $this->db->query("SELECT c.id_art,c.judul_art,c.gambar FROM $table AS a INNER JOIN tr_artikel AS b ON a.$kolom=b.$kolom INNER JOIN tr_art AS c ON b.id_artikel=c.id_artikel WHERE a.$kolom = $id")->result();
 }
 // =================================== get other ========================================
 public function get_other($table,$kolom,$id) {
-	return $this->db->query("SELECT * FROM $table AS a LEFT JOIN tr_artikel AS b ON a.$kolom = b.$kolom RIGHT JOIN tr_art AS c ON b.id_artikel = c.id_artikel WHERE a.$kolom !=  $id GROUP BY a.$kolom ORDER BY a.$kolom DESC LIMIT 4 ")->result();
+	return $this->db->query("SELECT * FROM $table AS a LEFT JOIN tr_artikel AS b ON a.$kolom = b.$kolom INNER JOIN tr_art AS c ON b.id_artikel = c.id_artikel WHERE a.$kolom !=  $id GROUP BY a.$kolom ORDER BY a.$kolom DESC LIMIT 4 ")->result();
 }
 
 	// ================================================ INSERT ===================================================
@@ -82,7 +82,7 @@ public function get_other($table,$kolom,$id) {
 	}
 	// ============================== Search ==========================
 	public function get_search($table,$kolom_id,$keyword,$kolom) {
-	return $this->db->query("SELECT * FROM $table AS a LEFT JOIN tr_artikel AS b ON a.$kolom_id = b.$kolom_id RIGHT JOIN tr_art AS c ON b.id_artikel = c.id_artikel WHERE a.$kolom LIKE '%$keyword%' GROUP BY a.$kolom_id ORDER BY a.$kolom_id DESC ")->result();
+	return $this->db->query("SELECT * FROM $table AS a LEFT JOIN tr_artikel AS b ON a.$kolom_id = b.$kolom_id INNER JOIN tr_art AS c ON b.id_artikel = c.id_artikel WHERE a.$kolom LIKE '%$keyword%' GROUP BY a.$kolom_id ORDER BY a.$kolom_id DESC ")->result();
 	}
 	public function get_search_art($table,$kolom_id,$keyword,$kolom) {
 		return $this->db->query("SELECT * FROM $table AS a WHERE a.$kolom LIKE '%$keyword%' GROUP BY a.$kolom_id ORDER BY a.$kolom_id DESC ")->result();

@@ -16,7 +16,13 @@
 					<div class="blog__cata"><?=$data->nama_jenis?></div>
 					<h2 class="blog__single__title"><?=$data->judul?></h2>
 					<div class="blog__metas">
-						<div class="blog__meta"><a href="<?= base_url("seniman/index/".$data->id_seniman) ?>"><?=$data->nama_seniman?></a></div>
+						<div class="blog__meta">
+						<?php if($data->id_seniman != 0): ?>
+							<a href="<?= base_url("Seniman/index/".$data->id_seniman) ?>"><?=$data->nama_seniman?></a><br>
+						<?php else: ?>
+							<span class="unknown">Tidak Diketahui</span><br>
+						<?php endif ?>	
+						</div>
 						<div class="blog__meta"><a href="<?= base_url("galeri/index/".$data->id_galeri) ?>"><?=$data->nama_galeri?></a></div>
 					</div>
 				</div>

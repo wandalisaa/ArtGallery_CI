@@ -24,7 +24,11 @@
 					<div class="text-left mr-auto">
 						<a href="<?= base_url("Seniman/index/".$data->id_seniman) ?>">
 							<h5><?=$data->judul_art?></h5>
-							<span><?=$data->nama_seniman?> </span>	
+							<?php if($data->id_seniman != 0): ?>
+							<a href="<?= base_url("Seniman/index/".$data->id_seniman) ?>"><?=$data->nama_seniman?></a><br>
+						<?php else: ?>
+							<span class="unknown">Tidak Diketahui</span><br>
+						<?php endif ?>	
 						</a>
 					</div>
 					<div class="text-right">
@@ -34,8 +38,12 @@
 						</a>
 					</div>
 				</div>
-
-					<p class="text-center"><?=$data->desk_art?></p>
+				<?php if($data->desk_art == NULL): ?>
+							<p class=" text-center unknown">Tidak Ada Keterangan</p><br>
+						<?php else: ?>
+							<p class="text-center"><?=$data->desk_art?></p>
+						<?php endif ?>
+					
 
 					<h3 class="my-3">Detail</h3>
 					<p>
@@ -53,10 +61,10 @@
 							<span class="unknown">Tidak Diketahui</span><br>
 						<?php endif ?>
 						<b>Dimensi:</b>
-						<?php if($data->dimensi != 0): ?>
-							<span><?=$data->dimensi ?></span><br>
-						<?php else: ?>
+						<?php if($data->dimensi == NULL): ?>
 							<span class="unknown">Tidak Diketahui</span><br>
+						<?php else: ?>
+							<span><?=$data->dimensi?></span><br>
 						<?php endif ?>
 						<b>Jenis:</b><a href="  <?= base_url("Jenis/index/".$data->id_jenis) ?>"><?=$data->nama_jenis?></a><br>
 						<b>Media:</b>
