@@ -37,7 +37,7 @@
                       </div>
 											<div class="col-md-12 mb-3">
                         <label for="namaKarya"><h4>Dimensi Karya</h4></label>
-                        <input type="text" class="form-control" id="namaKarya" name="dimensiKarya" placeholder="Karya" value="" >
+                        <input type="text" class="form-control" id="namaKarya" name="dimensiKarya" placeholder="Dimensi" value="" >
                         <div class="valid-feedback">
                           Bagus !
                         </div>

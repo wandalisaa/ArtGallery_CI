@@ -82,13 +82,13 @@ public function get_other($table,$kolom,$id) {
 	}
 	// ============================== Search ==========================
 	public function get_search($table,$kolom_id,$keyword,$kolom) {
-	return $this->db->query("SELECT * FROM $table AS a LEFT JOIN tr_artikel AS b ON a.$kolom_id = b.$kolom_id INNER JOIN tr_art AS c ON b.id_artikel = c.id_artikel WHERE a.$kolom LIKE '%$keyword%' GROUP BY a.$kolom_id ORDER BY a.$kolom_id DESC ")->result();
+	return $this->db->query("SELECT * FROM $table AS a INNER JOIN tr_artikel AS b ON a.$kolom_id = b.$kolom_id INNER JOIN tr_art AS c ON b.id_artikel = c.id_artikel WHERE a.$kolom LIKE '%$keyword%' GROUP BY a.$kolom_id ORDER BY a.$kolom_id DESC ")->result();
 	}
-	public function get_search_art($table,$kolom_id,$keyword,$kolom) {
-		return $this->db->query("SELECT * FROM $table AS a WHERE a.$kolom LIKE '%$keyword%' GROUP BY a.$kolom_id ORDER BY a.$kolom_id DESC ")->result();
+	public function get_search_art($keyword){
+		return $this->db->query("SELECT * FROM tr_art AS a WHERE a.id_art LIKE '%$keyword%' GROUP BY a.id_art ORDER BY a.id_art DESC ")->result();
 	}
-	public function get_search_artikel($table,$kolom_id,$keyword,$kolom) {
-		return $this->db->query("SELECT * FROM tr_art AS a LEFT JOIN tr_artikel AS b ON a.$kolom_id = b.$kolom_id  WHERE b.$kolom LIKE '%$keyword%' GROUP BY b.$kolom_id ORDER BY b.$kolom_id DESC ")->result();
+	public function get_search_artikel($keyword) {
+		return $this->db->query("SELECT * FROM tr_art AS a INNER JOIN tr_artikel AS b ON a.id_artikel = b.id_artikel  WHERE b.judul LIKE '%$keyword%' GROUP BY b.id_artikel ORDER BY b.id_artikel DESC ")->result();
 	}
 	// =============================== List ===========================
 	public function get_list($table){

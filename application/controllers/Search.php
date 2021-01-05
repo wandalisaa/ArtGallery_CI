@@ -32,8 +32,8 @@ class Search extends CI_Controller {
 		  $data['seniman']=$this->m_item->get_search('m_seniman','id_seniman',$keyword,'nama_seniman');
 		  $data['galeri']=$this->m_item->get_search('m_galeri','id_galeri',$keyword,'nama_galeri');
 		  $data['jenis']=$this->m_item->get_search('m_jenis','id_jenis',$keyword,'nama_jenis');
-		  $data['art']=$this->m_item->get_search_art('tr_art','id_art',$keyword,'judul_art');
-		  $data['artikel']=$this->m_item->get_search_artikel('tr_artikel','id_artikel',$keyword,'judul');
+		  $data['art']=$this->m_item->get_search_art($keyword);
+		  $data['artikel']=$this->m_item->get_search_artikel($keyword);
 
 		$this->load->view('header', $title);
 		$this->load->view('search',$data);

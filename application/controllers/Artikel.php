@@ -34,8 +34,15 @@ class Artikel extends CI_Controller {
 		public function insert_artikel(){
 			$nama = $this->input->post('judul');
 			$deskripsi = $this->input->post('deskripsi');
+	
 			$media = $this->input->post('media');
+			if ($media == 0 ) {
+				$media = NULL;
+			}
 			$seniman = $this->input->post('seniman');
+			if ($seniman == 0 ) {
+				$seniman = NULL;
+			}
 			$galeri = $this->input->post('galeri');
 			$jenis = $this->input->post('jenis');
 	
