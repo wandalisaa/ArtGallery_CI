@@ -22,10 +22,10 @@ class Favorit extends CI_Controller {
 
         parent::__construct();
 		
-		if(!$this->session->userdata('level','0') || !$this->session->userdata('level','1')){
-			$this->session->set_flashdata('danger', 'Anda Tidak memiliki akses ke halaman tersebut');
-			redirect('home/index/');
-		}
+		// if(!$this->session->userdata('level','0') || !$this->session->userdata('level','1')){
+		// 	$this->session->set_flashdata('danger', 'Anda Tidak memiliki akses ke halaman tersebut');
+		// 	redirect('home/index/');
+		// }
     }
 	public function index()
 	{
