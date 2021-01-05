@@ -17,7 +17,7 @@
 		<?php endif ?>
 				
 				<h3 class="text-center title py-3"><?=$data->judul_art?></h3>
-				<div class="blog__banner pb-4">
+				<div class="blog__banner pb-4 zoom">
 					<img src="<?= base_url().$data->gambar ?>" alt="">
 				</div>
 				<div class="row mb-3">
@@ -34,15 +34,37 @@
 						</a>
 					</div>
 				</div>
-				<p class="text-center"><?=$data->desk_art?></p>
+
+					<p class="text-center"><?=$data->desk_art?></p>
+
 					<h3 class="my-3">Detail</h3>
 					<p>
 						<b>Judul:</b><span><?=$data->judul_art?></span><br>
-						<b>Tahun Dibuat:</b><span><?=$data->tahun_dibuat?></span><br>
-						<b>Seniman:</b><a href="<?= base_url("Seniman/index/".$data->id_seniman) ?>"><?=$data->nama_seniman?></a><br>
-						<b>Dimensi:</b><span> <?=$data->dimensi?></span><br>
+						<b>Tahun Dibuat:</b>
+						<?php if($data->tahun_dibuat != 0): ?>
+							<span><?=$data->tahun_dibuat?></span><br>
+						<?php else: ?>
+							<span class="unknown">Tidak Diketahui</span><br>
+						<?php endif ?>
+						<b>Seniman:</b>
+						<?php if($data->id_seniman != 0): ?>
+							<a href="<?= base_url("Seniman/index/".$data->id_seniman) ?>"><?=$data->nama_seniman?></a><br>
+						<?php else: ?>
+							<span class="unknown">Tidak Diketahui</span><br>
+						<?php endif ?>
+						<b>Dimensi:</b>
+						<?php if($data->dimensi != 0): ?>
+							<span><?=$data->dimensi ?></span><br>
+						<?php else: ?>
+							<span class="unknown">Tidak Diketahui</span><br>
+						<?php endif ?>
 						<b>Jenis:</b><a href="  <?= base_url("Jenis/index/".$data->id_jenis) ?>"><?=$data->nama_jenis?></a><br>
-						<b>Media:</b><a href="<?= base_url("Media/index/".$data->id_media) ?>"><?=$data->nama_media?></a><br>
+						<b>Media:</b>
+						<?php if($data->id_media!= 0): ?>
+							<a href="<?= base_url("media/index/".$data->id_media) ?>"><?=$data->nama_media?></a><br>
+						<?php else: ?>
+							<span class="unknown">Tidak Diketahui</span><br>
+						<?php endif ?>
 						<b>Credit:</b><a href="<?= base_url("Galeri/index/".$data->id_galeri) ?>"><?=$data->nama_galeri?></a><br>
 					</p>
 				

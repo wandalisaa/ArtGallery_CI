@@ -17,7 +17,7 @@
                       </div>
                       <div class="col-md-12 mb-3">
                         <label for="deskMedia"><h4>Deskripsi</h4></label>
-                        <input type="text" class="form-control" id="deskMedia" placeholder="Deskripsi" name="deskMedia" required style="height: 100px;">
+                        <input type="text" class="form-control" id="deskMedia" placeholder="Deskripsi" name="deskMedia"  style="height: 100px;">
                         <div class="valid-feedback">
                           Bagus !
                         </div>

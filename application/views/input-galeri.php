@@ -17,7 +17,7 @@
                       </div>
                       <div class="col-md-12 mb-3">
                         <label for="deskGaleri"><h4>Deskripsi</h4></label>
-                        <input type="text" class="form-control" id="deskGaleri" placeholder="Deskripsi" name="deskGaleri" required style="height: 100px;">
+                        <input type="text" class="form-control" id="deskGaleri" placeholder="Deskripsi" name="deskGaleri"  style="height: 100px;">
                         <div class="valid-feedback">
                           Bagus !
                         </div>
@@ -38,7 +38,7 @@
 						</div>
 					  <div class="col-md-12 mb-3">
 						<div class="custom-file">
-							<input type="file" class="custom-file-input" id="logoGaleri" name="logoGaleri" required>
+							<input type="file" class="custom-file-input" id="logoGaleri" name="logoGaleri" >
 							<label class="custom-file-label" for="logoGaleri">Tambah Logo</label>
 						  </div>
 					  </div>

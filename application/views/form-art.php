@@ -16,28 +16,28 @@
                       </div>
                       <div class="col-md-12 mb-3">
                         <label for="deskKarya"><h4>Deskripsi</h4></label>
-                        <input type="text" class="form-control" id="deskKarya" name="deskKarya" placeholder="Deskripsi" value="<?=$data->desk_art?>" required style="height: 100px;">
+                        <input type="text" class="form-control" id="deskKarya" name="deskKarya" placeholder="Deskripsi" value="<?=$data->desk_art?>"  style="height: 100px;">
                         <div class="valid-feedback">
                           Bagus !
                         </div>
 					  </div>
 					  <div class="col-md-6 mb-3">
                         <label for="yearpicker"><h4>Tahun Dibuat</h4></label>
-                        <input type="number" class="form-control" id="yearpicker" name="tahunDibuat" placeholder="Tahun Dibuat" value="<?=$data->tahun_dibuat?>" required>
+                        <input type="number" class="form-control" id="yearpicker" name="tahunDibuat" placeholder="Tahun Dibuat" value="<?=$data->tahun_dibuat?>" >
                         <div class="valid-feedback">
                           Bagus !
                         </div>
 					  </div>
 					  <div class="col-md-6 mb-3">
                         <label for="lokasiKarya"><h4>Lokasi</h4></label>
-                        <input type="text" class="form-control" id="lokasiKarya" name="lokasiKarya" placeholder="Lokasi Pembuatan" value="<?=$data->tempat_dibuat?>" required>
+                        <input type="text" class="form-control" id="lokasiKarya" name="lokasiKarya" placeholder="Lokasi Pembuatan" value="<?=$data->tempat_dibuat?>" >
                         <div class="valid-feedback">
                           Bagus !
                         </div>
                       </div>
 											<div class="col-md-12 mb-3">
                         <label for="namaKarya"><h4>Dimensi Karya</h4></label>
-                        <input type="text" class="form-control" id="namaKarya" name="dimensiKarya" placeholder="Karya" value="<?=$data->dimensi?>" required>
+                        <input type="text" class="form-control" id="namaKarya" name="dimensiKarya" placeholder="Karya" value="<?=$data->dimensi?>" >
                         <div class="valid-feedback">
                           Bagus !
                         </div>

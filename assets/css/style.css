@@ -1396,3 +1396,19 @@ only screen and (min-width: 576px) and (max-width: 767px) {
 .ui-datepicker-calendar {
 	display: none;
  }
+ .zoom {
+	    /* padding: 50px; */
+    /* background-color: green; */
+    transition: transform .3s;
+    width: 270px;
+    /* height: 273px; */
+    margin: 0 auto;
+  }
+  
+  .zoom:hover {
+	transform: scale(3); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+  .unknown {
+	  color: gray !important;
+	  font-weight: 200;
+  }

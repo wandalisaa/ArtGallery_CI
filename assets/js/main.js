@@ -260,6 +260,7 @@ $('.message a').click(function(){
 window.onload = function(){
 var c = document.querySelector('.like-button');
 c.addEventListener("click", (e) => {
-	e.currentTarget.classList.toggle('liked'););
+	e.currentTarget.classList.toggle('liked')
 }
-
+);
+}

@@ -13,7 +13,7 @@
                       </div>
                       <div class="col-md-12 mb-3">
                         <label for="deskGaleri"><h4>Deskripsi</h4></label>
-                        <input type="text" class="form-control" name="deskGaleri" placeholder="Deskripsi" value="<?=$data->desk_galeri?>" required style="height: 100px;">
+                        <input type="text" class="form-control" name="deskGaleri" placeholder="Deskripsi" value="<?=$data->desk_galeri?>"  style="height: 100px;">
                         <div class="valid-feedback">
                           Bagus !
                         </div>

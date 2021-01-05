@@ -35,8 +35,8 @@
 					  <div class="col-md-6 mb-3">
 						<div class="form-group">
 							<label for="media"><h4>Media</h4></label>
-							<select id="media" name="media" class="custom-select" required>
-							  <option value="<?=$data_artikel->id_jenis?>"><?=$data_artikel->nama_media?></option>
+							<select id="media" name="media" class="custom-select">
+							  <option value="<?=$data_artikel->id_media?>"><?=$data_artikel->nama_media?></option>
 							  <?php foreach($media as $data): ?>
 							  <option value="<?=$data->id_media?>"><?=$data->nama_media?></option>
 							<?php endforeach ?>
@@ -47,7 +47,7 @@
 					  <div class="col-md-6 mb-3">
 						<div class="form-group">
 							<label for="seniman"><h4>Seniman</h4></label>
-							<select id="seniman" name="seniman" class="custom-select" required>
+							<select id="seniman" name="seniman" class="custom-select">
 							  <option value="<?=$data_artikel->id_seniman?>"><?=$data_artikel->nama_seniman?></option>
 							  <?php foreach($seniman as $data): ?>
 							  <option value="<?=$data->id_seniman?>"><?=$data->nama_seniman?></option>
@@ -60,7 +60,7 @@
 						<div class="form-group">
 							<label for="galeri"><h4>Galeri</h4></label>
 							<select id="galeri" name="galeri" class="custom-select" required>
-							  <option value="<?=$data_artikel->id_jenis?>"><?=$data_artikel->nama_galeri?></option>
+							  <option value="<?=$data_artikel->id_galeri?>"><?=$data_artikel->nama_galeri?></option>
 							  <?php foreach($galeri as $data): ?>
 							  <option value="<?=$data->id_galeri?>"><?=$data->nama_galeri?></option>
 							<?php endforeach ?>

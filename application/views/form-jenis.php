@@ -15,7 +15,7 @@
                       </div>
                       <div class="col-md-12 mb-3">
                         <label for="deskJenis"><h4>Deskripsi</h4></label>
-                        <input type="text" class="form-control" name="deskJenis" placeholder="Deskripsi" value="<?=$data->desk_jenis?>" required style="height: 100px;">
+                        <input type="text" class="form-control" name="deskJenis" placeholder="Deskripsi" value="<?=$data->desk_jenis?>" style="height: 100px;">
                         <div class="valid-feedback">
                           Bagus !
                         </div>

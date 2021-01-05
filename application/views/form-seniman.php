@@ -15,14 +15,14 @@
                       </div>
                       <div class="col-md-12 mb-3">
                         <label for="deskSeniman"><h4>Deskripsi</h4></label>
-                        <input type="text" class="form-control" id="deskSeniman" name="deskSeniman" placeholder="Deskripsi" value="<?=$data->desk_seniman?>" required style="height: 100px;">
+                        <input type="text" class="form-control" id="deskSeniman" name="deskSeniman" placeholder="Deskripsi" value="<?=$data->desk_seniman?>" style="height: 100px;">
                         <div class="valid-feedback">
                           Bagus !
                         </div>
 											</div>
 											<div class="col-md-12 mb-3">
                         <label for="tglSeniman"><h4>Tanggal Lahir</h4></label>
-                        <input type="date" class="form-control" id="tglSeniman" name="tanggalLahir"  placeholder="Tanggal Lahir" value="<?=$data->tanggal_lahir?>" required>
+                        <input type="date" class="form-control" id="tglSeniman" name="tanggalLahir"  placeholder="Tanggal Lahir" value="<?=$data->tanggal_lahir?>" >
                         <div class="valid-feedback">
                           Bagus !
                         </div>

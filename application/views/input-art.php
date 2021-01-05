@@ -16,28 +16,28 @@
                       </div>
                       <div class="col-md-12 mb-3">
                         <label for="deskKarya"><h4>Deskripsi</h4></label>
-                        <input type="text" class="form-control" id="deskKarya" name="deskKarya" placeholder="Deskripsi" value="" required style="height: 100px;">
+                        <input type="text" class="form-control" id="deskKarya" name="deskKarya" placeholder="Deskripsi" value=""  style="height: 100px;">
                         <div class="valid-feedback">
                           Bagus !
                         </div>
 					  </div>
 					  <div class="col-md-6 mb-3">
                         <label for="yearpicker"><h4>Tahun Dibuat</h4></label>
-                        <input type="number" class="form-control" id="yearpicker" name="tahunDibuat" placeholder="Tahun Dibuat" value="" required>
+                        <input type="number" class="form-control" id="yearpicker" name="tahunDibuat" placeholder="Tahun Dibuat" value="" >
                         <div class="valid-feedback">
                           Bagus !
                         </div>
 					  </div>
 					  <div class="col-md-6 mb-3">
                         <label for="lokasiKarya"><h4>Lokasi</h4></label>
-                        <input type="text" class="form-control" id="lokasiKarya" name="lokasiKarya" placeholder="Lokasi Pembuatan" value="" required>
+                        <input type="text" class="form-control" id="lokasiKarya" name="lokasiKarya" placeholder="Lokasi Pembuatan" value="" >
                         <div class="valid-feedback">
                           Bagus !
                         </div>
                       </div>
 											<div class="col-md-12 mb-3">
                         <label for="namaKarya"><h4>Dimensi Karya</h4></label>
-                        <input type="text" class="form-control" id="namaKarya" name="dimensiKarya" placeholder="Karya" value="" required>
+                        <input type="text" class="form-control" id="namaKarya" name="dimensiKarya" placeholder="Karya" value="" >
                         <div class="valid-feedback">
                           Bagus !
                         </div>
