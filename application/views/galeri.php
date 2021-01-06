@@ -5,7 +5,7 @@
 		<article class="blog__article pt-5">
 			<blockquote class="shadow bg-white" style="    text-align: -webkit-center;">
 				<?php foreach($galeri as $data){?>
-                <div class="brand-galeri" style="background-image: url('<?= base_url();?><?=$data->foto?>');"></div>
+                <div class="brand-galeri" style="background-image: url('<?= base_url("images/".$data->foto) ?>');"></div>
                 <h3 class="text-center title py-3"><?=$data->nama_galeri?></h3>
                 <div class="blog__header">
 					<div class="blog__metas">

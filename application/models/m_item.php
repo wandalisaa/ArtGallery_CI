@@ -3,7 +3,8 @@
 class M_item extends CI_Model{
 
 	// =============================================== SELECT =======================================================
-	//mengambil nama-nama gerakan jenis dan jumlah karya seni terkait
+	// VIEW untuk menampilkan thumbnail dari gerakan seni berupa total karya seni terkait ,
+	//  tahun awal , nama nya , dan salah satu gambar dari karya seni yang terkait dengan gerakan seni tersebut 
 	public function get_list_jenis() {
 		return $this->db->query("SELECT * FROM gerakan_seni ORDER BY id_jenis DESC LIMIT 7 ")->result();
 	}
@@ -18,10 +19,15 @@ class M_item extends CI_Model{
 	}
 
 	// ARTIKEL
+	// VIEW untuk menampilkan data semua data terkait suatu artikel , dimana terdapat fungsi
+	//  Left join yang akan menampilkan semua data dari table kiri meskipun tidak ada data yang 
+	//  terkait di table kanan , dan table kanan akan berisikan null
 	public function get_artikel($id) {
 		return $this->db->query("SELECT * FROM artikel WHERE id_artikel = $id")->result();
 	}
-	// karya seni dalam arikel
+	// VIEW untuk menampilkan data semua data terkait suatu karya seni ,
+	//  dimana terdapat fungsi Left join yang akan menampilkan semua data dari table 
+	//  kiri meskipun tidak ada data yang terkait di table kanan , dan table kanan akan berisikan null
 	public function get_art_artikel($id) {
 		return $this->db->query("SELECT * FROM art WHERE id_artikel = $id")->result();
 	}
@@ -37,15 +43,25 @@ class M_item extends CI_Model{
 
 // ===================================== artikel terkait =====================================
 public function get_artikel_terkait($table,$kolom,$id) {
-	return $this->db->query("SELECT a.id_artikel,a.judul,b.id_galeri,b.nama_galeri,c.gambar FROM tr_artikel AS a INNER JOIN $table AS t ON a.$kolom = t.$kolom INNER JOIN m_galeri AS b ON a.id_galeri=b.id_galeri INNER JOIN tr_art AS c ON a.id_artikel=c.id_artikel WHERE a.$kolom = $id GROUP BY a.id_artikel")->result();
+	return $this->db->query("SELECT a.id_artikel,a.judul,b.id_galeri,b.nama_galeri,c.gambar
+	 FROM tr_artikel AS a INNER JOIN $table AS t ON a.$kolom = t.$kolom INNER JOIN m_galeri AS b
+	 ON a.id_galeri=b.id_galeri INNER JOIN tr_art AS c ON a.id_artikel=c.id_artikel
+	 WHERE a.$kolom = $id GROUP BY a.id_artikel")->result();
 }
 // ===================================== karya seni terkait =====================================
 public function get_art_terkait($table,$kolom,$id) {
-	return $this->db->query("SELECT c.id_art,c.judul_art,c.gambar FROM $table AS a INNER JOIN tr_artikel AS b ON a.$kolom=b.$kolom INNER JOIN tr_art AS c ON b.id_artikel=c.id_artikel WHERE a.$kolom = $id")->result();
+	return $this->db->query("SELECT c.id_art,c.judul_art,c.gambar
+	FROM $table AS a INNER JOIN tr_artikel AS b ON a.$kolom=b.$kolom 
+	INNER JOIN tr_art AS c ON b.id_artikel=c.id_artikel
+	WHERE a.$kolom = $id")->result();
 }
 // =================================== get other ========================================
 public function get_other($table,$kolom,$id) {
-	return $this->db->query("SELECT * FROM $table AS a LEFT JOIN tr_artikel AS b ON a.$kolom = b.$kolom INNER JOIN tr_art AS c ON b.id_artikel = c.id_artikel WHERE a.$kolom !=  $id GROUP BY a.$kolom ORDER BY a.$kolom DESC LIMIT 4 ")->result();
+	return $this->db->query("SELECT * FROM $table AS a
+	 LEFT JOIN tr_artikel AS b ON a.$kolom = b.$kolom 
+	 INNER JOIN tr_art AS c ON b.id_artikel = c.id_artikel 
+	 WHERE a.$kolom !=  $id GROUP BY a.$kolom 
+	 ORDER BY a.$kolom DESC LIMIT 4 ")->result();
 }
 
 	// ================================================ INSERT ===================================================
@@ -78,17 +94,25 @@ public function get_other($table,$kolom,$id) {
 		return $this->db->delete('tr_fav');
 	}
 	public function favorit($id_user){
-		return $this->db->query("SELECT b.judul_art,b.id_art,b.gambar FROM `tr_fav` AS a JOIN tr_art as b ON a.id_art = b.id_art WHERE a.id_user = $id_user ORDER BY a.id_fav DESC")->result();
+		return $this->db->query("SELECT b.judul_art,b.id_art,b.gambar 
+		FROM `tr_fav` AS a JOIN tr_art as b ON a.id_art = b.id_art 
+		WHERE a.id_user = $id_user ORDER BY a.id_fav DESC")->result();
 	}
 	// ============================== Search ==========================
 	public function get_search($table,$kolom_id,$keyword,$kolom) {
-	return $this->db->query("SELECT * FROM $table AS a INNER JOIN tr_artikel AS b ON a.$kolom_id = b.$kolom_id INNER JOIN tr_art AS c ON b.id_artikel = c.id_artikel WHERE a.$kolom LIKE '%$keyword%' GROUP BY a.$kolom_id ORDER BY a.$kolom_id DESC ")->result();
+	return $this->db->query("SELECT * FROM $table AS a INNER JOIN
+	 tr_artikel AS b ON a.$kolom_id = b.$kolom_id INNER JOIN 
+	 tr_art AS c ON b.id_artikel = c.id_artikel WHERE a.$kolom 
+	 LIKE '%$keyword%' GROUP BY a.$kolom_id ORDER BY a.$kolom_id DESC ")->result();
 	}
 	public function get_search_art($keyword){
-		return $this->db->query("SELECT * FROM tr_art AS a WHERE a.id_art LIKE '%$keyword%' GROUP BY a.id_art ORDER BY a.id_art DESC ")->result();
+		return $this->db->query("SELECT * FROM tr_art AS a WHERE a.id_art
+		LIKE '%$keyword%' GROUP BY a.id_art ORDER BY a.id_art DESC ")->result();
 	}
 	public function get_search_artikel($keyword) {
-		return $this->db->query("SELECT * FROM tr_art AS a INNER JOIN tr_artikel AS b ON a.id_artikel = b.id_artikel  WHERE b.judul LIKE '%$keyword%' GROUP BY b.id_artikel ORDER BY b.id_artikel DESC ")->result();
+		return $this->db->query("SELECT * FROM tr_art AS a INNER JOIN
+		 tr_artikel AS b ON a.id_artikel = b.id_artikel  WHERE b.judul 
+		 LIKE '%$keyword%' GROUP BY b.id_artikel ORDER BY b.id_artikel DESC ")->result();
 	}
 	// =============================== List ===========================
 	public function get_list($table){
@@ -110,7 +134,8 @@ public function get_other($table,$kolom,$id) {
 	}
 	// like
 	public function check_like($id_art,$id_user){
-		return $this->db->query("SELECT EXISTS(SELECT * from tr_fav WHERE id_user = $id_user AND id_art = $id_art) as a")->result();
+		return $this->db->query("SELECT EXISTS(SELECT * from tr_fav 
+		WHERE id_user = $id_user AND id_art = $id_art) as a")->result();
 	}
 	// fetch
 
