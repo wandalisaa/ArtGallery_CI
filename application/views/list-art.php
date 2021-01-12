@@ -26,7 +26,7 @@
 			<div class="text-right float-right">
 				<a  href="<?= base_url('admin/art/'.$data_artikel->id_artikel) ?>" class="btn btn-primary my-2"><i class="fa fa-plus"></i> Tambah Koleksi</a>
 			</div>
-			<table class="table">
+			<table class="table" id="tableArt">
 					<thead class="thead-dark">
 					
 					  <tr>
@@ -54,3 +54,4 @@
 				<?php endforeach ?>
 			</blockquote>
 		</div>
+

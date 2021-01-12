@@ -7,7 +7,7 @@
 		<article class="blog__article pt-3">
 			<blockquote class="shadow bg-white">
 			<?php foreach($media as $data): ?>
-				<form class="needs-validation" method="post" action="<?=base_url('media/insert_media/')?>" enctype="multipart/form-data" novalidate>
+				<form class="needs-validation" method="post" action="<?=base_url('media/do_update/')?>" enctype="multipart/form-data" novalidate>
                     <div class="form-row">
                       <div class="col-md-12 mb-3">
                         <label for="namaMedia"><h4>Nama Media</h4></label>

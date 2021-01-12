@@ -27,6 +27,8 @@
 	<script src="<?php echo base_url();?>assets/js/slick.min.js"></script>
 	<script src="<?php echo base_url();?>assets/js/fresco.min.js"></script>
 	<script src="<?php echo base_url();?>assets/js/main.js"></script>
+	<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+   <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
 
 	</body>
 </html>

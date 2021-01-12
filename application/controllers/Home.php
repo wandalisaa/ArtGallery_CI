@@ -34,6 +34,48 @@ class Home extends CI_Controller {
 		$this->load->view('index', $data);
 		$this->load->view('footer');
 	}
+	public function seniman()
+	{
+		$title = array(
+			"page" => "Home",
+			"title" => "Seniman",
+			"active" => "none"
+		  );
+		
+		$data['semua'] = $this->m_item->get_all('m_seniman','id_seniman','nama_seniman');
+		
+		$this->load->view('header', $title);
+		$this->load->view('list', $data);
+		$this->load->view('footer');
+	}
+	public function media()
+	{
+		$title = array(
+			"page" => "Home",
+			"title" => "media",
+			"active" => "none"
+		  );
+		
+		$data['semua'] = $this->m_item->get_all('m_media','id_media','nama_media');
+		
+		$this->load->view('header', $title);
+		$this->load->view('list', $data);
+		$this->load->view('footer');
+	}
+	public function galeri()
+	{
+		$title = array(
+			"page" => "Home",
+			"title" => "galeri",
+			"active" => "none"
+		  );
+		
+		$data['semua'] = $this->m_item->get_all('m_galeri','id_galeri','nama_galeri');
+		
+		$this->load->view('header', $title);
+		$this->load->view('list', $data);
+		$this->load->view('footer');
+	}
 	public function abjad()
 	{
 		$title = array(

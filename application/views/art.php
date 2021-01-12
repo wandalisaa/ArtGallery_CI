@@ -22,14 +22,12 @@
 				</div>
 				<div class="row mb-3">
 					<div class="text-left mr-auto">
-						<a href="<?= base_url("Seniman/index/".$data->id_seniman) ?>">
 							<h5><?=$data->judul_art?></h5>
 							<?php if($data->id_seniman != 0): ?>
 							<a href="<?= base_url("Seniman/index/".$data->id_seniman) ?>"><?=$data->nama_seniman?></a><br>
 						<?php else: ?>
 							<span class="unknown">Tidak Diketahui</span><br>
 						<?php endif ?>	
-						</a>
 					</div>
 					<div class="text-right">
 						<a href="<?= base_url("Galeri/index/".$data->id_galeri) ?>">

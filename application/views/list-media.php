@@ -26,3 +26,8 @@
 				  </table>
 			</blockquote>
 		</div>
+		<script>
+	 $(document).ready(function() {
+      $('.table').DataTable();
+  });
+</script>

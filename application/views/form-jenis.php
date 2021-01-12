@@ -4,7 +4,7 @@
 		<article class="blog__article pt-3">
 			<blockquote class="shadow bg-white">
 			<?php foreach($jenis as $data): ?>
-				<form class="needs-validation" method="post" action="<?=base_url('jenis/insert_jenis/'.$data->id_jenis)?>" novalidate>
+				<form class="needs-validation" method="post" action="<?=base_url('jenis/do_update/'.$data->id_jenis)?>" novalidate>
                     <div class="form-row">
                       <div class="col-md-12 mb-3">
                         <label for="namaJenis"><h4>Nama Gerakan Seni</h4></label>

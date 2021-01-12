@@ -1,4 +1,9 @@
 
+<style>
+.dataTables_wrapper{
+	width: 100%;
+}
+</style>
 	<!-- Blog Page -->
 	<div class="blog__single__page pb-5">
 		<article class="blog__article pt-2 ">
@@ -98,7 +103,7 @@
 				</div>
 				<h3 class="my-3">Daftar User</h3>
 				<div class="row">
-				<table class="table mx-3">
+				<table class="table mx-3 w-100">
 					<thead class="thead-dark">
 					  <tr>
 						<th scope="col">No</th>
@@ -128,3 +133,8 @@
 				</div>
 			</blockquote>
 		</div>
+		<script>
+	 $(document).ready(function() {
+      $('.table').DataTable();
+  });
+</script>

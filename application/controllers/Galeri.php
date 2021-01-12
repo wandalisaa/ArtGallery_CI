@@ -83,7 +83,7 @@ class Galeri extends CI_Controller {
 		}
 		else {
 		$data += array(
-			'foto' => $coanfig['upload_path'].$this->upload->data('file_name'),
+			'foto' => $config['upload_path'].$this->upload->data('file_name'),
 		);
 		}
 		

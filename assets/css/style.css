@@ -981,7 +981,7 @@ only screen and (min-width: 576px) and (max-width: 767px) {
 .blog__article blockquote {
 	max-width: 1170px;
     margin: 50px auto;
-    padding: 45px 45px 55px;
+    padding: 45px 45px 55px !important;
     border-radius: 25px;
     background-color: #ffffff;
     /* background-image: url(../img/blog-single/quote.png); */

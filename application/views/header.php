@@ -17,6 +17,9 @@
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css"/>
     <!-- icon -->
     <link rel="icon" href="<?php echo base_url();?>assets/img/art-and-design.ico" type="image/icon type">
+		<!-- datatables -->
+		<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css">
+   <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables_themeroller.css">
 
 	<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -57,6 +60,9 @@
 			<nav class="main__menu">
 				<ul class="nav__menu">
 					<li><a href="<?= base_url() ?>" >Home</a></li>
+					<li><a href="<?= base_url("home/seniman/") ?>" >Seniman</a></li>
+					<li><a href="<?= base_url("home/media/") ?>" >Media</a></li>
+					<li><a href="<?= base_url("home/galeri/") ?>" >Galeri</a></li>
 					<?php  if($this->session->userdata('username') == FALSE){?>
 						<li><a href="<?= base_url("auth/index/") ?>">Login</a></li>
 					<?php } else  if($this->session->userdata('username') == TRUE){?>

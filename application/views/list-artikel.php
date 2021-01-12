@@ -2,7 +2,7 @@
 	<div class="blog__single__page pb-5">
 		<article class="blog__article pt-2 ">
 			<blockquote class="shadow bg-white p-3 mb-5" style="text-align: -webkit-center;">
-			<table class="table">
+			<table class="table" id="artikel">
 					<thead class="thead-dark">
 					  <tr>
 						<th scope="col">No</th>
@@ -35,3 +35,8 @@
 				  </table>
 			</blockquote>
 		</div>
+		<script>
+	 $(document).ready(function() {
+      $('.table').DataTable();
+  });
+</script>
