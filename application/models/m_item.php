@@ -50,11 +50,16 @@ class M_item extends CI_Model{
 			FROM `tr_fav` AS a JOIN tr_art as b ON a.id_art = b.id_art 
 			WHERE a.id_user = $id_user ORDER BY a.id_fav DESC")->result();
 		}
+	// ARTIKEL
 
+	// CREATE VIEW artikel AS SELECT a.id_artikel,a.judul,a.deskripsi,b.id_galeri,b.nama_galeri,b.kota,b.negara,c.id_jenis,c.nama_jenis,d.id_seniman,d.nama_seniman,e.id_media,e.nama_media
+	//  FROM tr_artikel AS a INNER JOIN m_galeri AS b ON a.id_galeri = b.id_galeri INNER JOIN m_jenis AS c ON a.id_jenis = c.id_jenis LEFT JOIN m_seniman AS d ON a.id_seniman=d.id_seniman 
+	//  LEFT JOIN m_media AS e ON a.id_media = e.id_media
+
+	// VIEW untuk menampilkan data semua data terkait suatu artikel , dimana terdapat fungsi
+	//  Left join yang akan menampilkan semua data dari table kiri meskipun tidak ada data yang 
+	//  terkait di table kanan , dan table kanan akan berisikan null
 		// =============================== List ===========================
-		public function get_list($table){
-			return $this->db->query("SELECT * from $table")->result();
-		}
 		// detail
 		public function get_detail($table,$kolom,$id){
 			return $this->db->query("SELECT * FROM $table WHERE $kolom = $id")->result();
@@ -68,6 +73,9 @@ class M_item extends CI_Model{
 	
 		public function get_all_art($id) {
 			return $this->db->query("SELECT * FROM art WHERE id_artikel = $id")->result();
+		}
+		public function get_list($table) {
+			return $this->db->query("SELECT * FROM $table")->result();
 		}
 
 	// CREATE VIEW art AS SELECT a.id_artikel,a.judul,b.id_art,b.judul_art,b.desk_art,b.tahun_dibuat,b.dimensi,b.gambar,b.tempat_dibuat,c.nama_seniman,c.id_seniman,
@@ -89,19 +97,6 @@ class M_item extends CI_Model{
 	// karya seni lainnya
 	public function get_list_art($id) {
 		return $this->db->query("SELECT * FROM art WHERE id_art != $id ORDER BY id_art DESC LIMIT 5")->result();
-	}
-
-	// ARTIKEL
-
-	// CREATE VIEW artikel AS SELECT a.id_artikel,a.judul,a.deskripsi,b.id_galeri,b.nama_galeri,b.kota,b.negara,c.id_jenis,c.nama_jenis,d.id_seniman,d.nama_seniman,e.id_media,e.nama_media
-	//  FROM tr_artikel AS a INNER JOIN m_galeri AS b ON a.id_galeri = b.id_galeri INNER JOIN m_jenis AS c ON a.id_jenis = c.id_jenis LEFT JOIN m_seniman AS d ON a.id_seniman=d.id_seniman 
-	//  LEFT JOIN m_media AS e ON a.id_media = e.id_media
-
-	// VIEW untuk menampilkan data semua data terkait suatu artikel , dimana terdapat fungsi
-	//  Left join yang akan menampilkan semua data dari table kiri meskipun tidak ada data yang 
-	//  terkait di table kanan , dan table kanan akan berisikan null
-	public function get_artikel($id) {
-		return $this->db->query("SELECT * FROM artikel WHERE id_artikel = $id")->result();
 	}
 
 
